@@ -11,7 +11,7 @@ import NotesList from "./components/NotesList";
 function App() {
   return (
     <div>
-      <Header />
+      <Header title="Advanced Notes App" />
       <NoteForm />
       <NotesList />
     </div>

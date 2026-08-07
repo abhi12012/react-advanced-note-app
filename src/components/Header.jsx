@@ -1,11 +1,13 @@
-function Header() {
+function Header(props) {
 
   const title = "Advanced Notes App";
+  const subtitle = "Learn React Step by Step";
 
   return (
-    <h1>
-      {title}
-    </h1>
+    <div>
+      <h1>{props.title}</h1>
+      <p>{subtitle}</p>
+    </div>
   );
 }
 
