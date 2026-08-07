@@ -13,11 +13,12 @@ function App() {
     <div>
       <Header />
       <NoteForm />
+      <NotesList />
     </div>
   );
 }
 
-
-
-
 export default App;
+
+
+

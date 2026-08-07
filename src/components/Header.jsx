@@ -1,6 +1,11 @@
 function Header() {
+
+  const title = "Advanced Notes App";
+
   return (
-    <h1>Advanced Notes App</h1>
+    <h1>
+      {title}
+    </h1>
   );
 }
 
