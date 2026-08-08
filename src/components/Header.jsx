@@ -1,12 +1,10 @@
-function Header(props) {
-
-  const title = "Advanced Notes App";
-  const subtitle = "Learn React Step by Step";
-
+function Header({ title, subtitle, children }) {
   return (
     <div>
-      <h1>{props.title}</h1>
+      <h1>{title}</h1>
       <p>{subtitle}</p>
+
+      {children}
     </div>
   );
 }

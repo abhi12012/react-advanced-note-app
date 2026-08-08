@@ -11,7 +11,14 @@ import NotesList from "./components/NotesList";
 function App() {
   return (
     <div>
-      <Header title="Advanced Notes App" />
+     <Header
+  title="Advanced Notes App"
+  subtitle="Learn React Step by Step"
+>
+  <button>New Note</button>
+</Header>
+
+
       <NoteForm />
       <NotesList />
     </div>
