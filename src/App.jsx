@@ -134,6 +134,21 @@ return (
 
 
 
+{editingId !== null && (
+  <button onClick={() => {
+    setEditingId(null);
+    setNote({
+      title: "",
+      description: ""
+    });
+  }}>
+    Cancel Edit
+  </button>
+)}
+
+
+
+
     {notes.length === 0 && <p>No notes available.</p>}
 
     {notes.map((note, index) => (
