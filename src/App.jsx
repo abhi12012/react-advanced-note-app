@@ -47,40 +47,44 @@ function App() {
 
 
 
-  return (
-    <div>
-      <h1>Advanced Notes App</h1>
 
-      <input
-        name="title"
-        type="text"
-        placeholder="Enter note title"
-        value={note.title}
-        onChange={handleChange}
-      />
+return (
+  <div>
+    <h1>Advanced Notes App</h1>
 
-      <textarea
-        name="description"
-        placeholder="Enter note description"
-        value={note.description}
-        onChange={handleChange}
-      />
+    <input
+      name="title"
+      type="text"
+      placeholder="Enter note title"
+      value={note.title}
+      onChange={handleChange}
+    />
 
-      <button onClick={handleAddNote}>
-        Add Note
-      </button>
+    <textarea
+      name="description"
+      placeholder="Enter note description"
+      value={note.description}
+      onChange={handleChange}
+    />
 
+    <button onClick={handleAddNote}>
+      Add Note
+    </button>
 
-      {notes.map((note, index) => (
-  <div key={index}>
-    <h3>{note.title}</h3>
-    <p>{note.description}</p>
+    {notes.map((note, index) => (
+      <div key={note.id}>
+        <h3>{note.title}</h3>
+        <p>{note.description}</p>
+
+        <button>
+          Delete
+        </button>
+      </div>
+    ))}
   </div>
-))}
+);
 
 
-    </div>
-  );
 }
 
 export default App;
