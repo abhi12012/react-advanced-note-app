@@ -13,6 +13,10 @@ function App() {
 
   const [notes, setNotes] = useState([]);
 
+
+
+
+
   function handleChange(event) {
     const { name, value } = event.target;
 
@@ -82,17 +86,17 @@ function App() {
 
 
 function handleEdit(id) {
-  console.log(id);
+  
 
   setEditingId(id);
 
   const noteToEdit = notes.find((note) => note.id === id);
 
-  console.log(noteToEdit);
+  
 
   setNote(noteToEdit);
 
-  console.log("Form data:", noteToEdit);
+  
 
   setNote(noteToEdit);
 }
@@ -103,6 +107,7 @@ function handleEdit(id) {
 return (
   <div>
     <h1>Advanced Notes App</h1>
+    <p>Total Notes: {notes.length}</p>
 
     <input
       name="title"
@@ -126,11 +131,16 @@ return (
     <button onClick={handleAddNote}>
       Add Note
     </button>
+    
 
+    {notes.length === 0 && <p>No notes available.</p>}
+    
     {notes.map((note, index) => (
       <div key={note.id}>
         <h3>{note.title}</h3>
         <p>{note.description}</p>
+
+        
 
 
    <button onClick={() => handleEdit(note.id)}>
