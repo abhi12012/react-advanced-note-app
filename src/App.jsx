@@ -25,7 +25,14 @@ function App() {
   };
 
   setNotes([...notes, newNote]);
+
+  setNote({
+  title: "",
+  description: ""
+});
 }
+
+
 
   return (
     <div>
