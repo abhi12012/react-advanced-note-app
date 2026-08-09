@@ -129,12 +129,13 @@ return (
 
 
     <button onClick={handleAddNote}>
-      Add Note
-    </button>
-    
+  {editingId !== null ? "Update Note" : "Add Note"}
+</button>
+
+
 
     {notes.length === 0 && <p>No notes available.</p>}
-    
+
     {notes.map((note, index) => (
       <div key={note.id}>
         <h3>{note.title}</h3>
