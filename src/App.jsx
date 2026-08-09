@@ -154,20 +154,20 @@ return (
     {notes.map((note, index) => (
       <div key={note.id}>
         <h3>{note.title}</h3>
-        <p>{note.description}</p>
+        <p>{note.description || "No description"}</p>
 
         
 
 
-   <button onClick={() => handleEdit(note.id)}>
-  Edit
-</button>
+   <div>
+  <button onClick={() => handleEdit(note.id)}>
+    Edit
+  </button>
 
-
-
-       <button onClick={() => handleDelete(note.id)}>
-  Delete
-</button>
+  <button onClick={() => handleDelete(note.id)}>
+    Delete
+  </button>
+</div>
 
       </div>
     ))}
