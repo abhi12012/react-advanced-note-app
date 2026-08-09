@@ -28,7 +28,7 @@ function App() {
     return;
   }
 
-  const newNote = {
+    const newNote = {
     ...note,
     id: Date.now()
   };
@@ -44,6 +44,11 @@ function App() {
 
 
 
+ function handleDelete(id) {
+  const updatedNotes = notes.filter((note) => note.id !== id);
+
+  setNotes(updatedNotes);
+}
 
 
 
@@ -76,9 +81,10 @@ return (
         <h3>{note.title}</h3>
         <p>{note.description}</p>
 
-        <button>
-          Delete
-        </button>
+       <button onClick={() => handleDelete(note.id)}>
+  Delete
+</button>
+
       </div>
     ))}
   </div>
