@@ -18,10 +18,14 @@ function App() {
     });
   }
 
-  function handleAddNote() {
-    setNotes([...notes, note]);
-     console.log(notes);
-  }
+ function handleAddNote() {
+  const newNote = {
+    ...note,
+    id: Date.now()
+  };
+
+  setNotes([...notes, newNote]);
+}
 
   return (
     <div>
