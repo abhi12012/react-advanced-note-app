@@ -18,7 +18,16 @@ function App() {
     });
   }
 
+
+
+
+
+
  function handleAddNote() {
+  if (note.title.trim() === "") {
+    return;
+  }
+
   const newNote = {
     ...note,
     id: Date.now()
@@ -27,10 +36,14 @@ function App() {
   setNotes([...notes, newNote]);
 
   setNote({
-  title: "",
-  description: ""
-});
+    title: "",
+    description: ""
+  });
 }
+
+
+
+
 
 
 
