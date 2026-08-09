@@ -52,6 +52,16 @@ function App() {
 
 
 
+function handleEdit(id) {
+  
+
+  const noteToEdit = notes.find((note) => note.id === id);
+  
+  setNote(noteToEdit);
+} 
+
+
+
 
 return (
   <div>
@@ -68,9 +78,13 @@ return (
     <textarea
       name="description"
       placeholder="Enter note description"
+      
       value={note.description}
       onChange={handleChange}
     />
+
+
+
 
     <button onClick={handleAddNote}>
       Add Note
@@ -80,6 +94,13 @@ return (
       <div key={note.id}>
         <h3>{note.title}</h3>
         <p>{note.description}</p>
+
+
+   <button onClick={() => handleEdit(note.id)}>
+  Edit
+</button>
+
+
 
        <button onClick={() => handleDelete(note.id)}>
   Delete
