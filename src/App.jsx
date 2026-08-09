@@ -6,6 +6,10 @@ function App() {
     description: ""
   });
 
+  const [editingId, setEditingId] = useState(null);
+
+  
+
 
   const [notes, setNotes] = useState([]);
 
@@ -27,6 +31,21 @@ function App() {
   if (note.title.trim() === "") {
     return;
   }
+
+
+  if (editingId !== null) {
+  const updatedNotes = notes.map((item) =>
+    item.id === editingId ? { ...note, id: editingId } : item
+  );
+
+  setNotes(updatedNotes);
+
+  setEditingId(null);
+
+  return;
+}
+
+
 
     const newNote = {
     ...note,
@@ -52,13 +71,31 @@ function App() {
 
 
 
+
+
+
+
+
+
+
+
+
+
 function handleEdit(id) {
-  
+  console.log(id);
+
+  setEditingId(id);
 
   const noteToEdit = notes.find((note) => note.id === id);
-  
+
+  console.log(noteToEdit);
+
   setNote(noteToEdit);
-} 
+
+  console.log("Form data:", noteToEdit);
+
+  setNote(noteToEdit);
+}
 
 
 
