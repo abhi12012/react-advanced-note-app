@@ -1,5 +1,18 @@
 import { useState } from "react";
 
+
+
+function NoteForm() {
+  return (
+    <div>
+      <h2>Note Form</h2>
+
+      
+    </div>
+  );
+}
+
+
 function App() {
   const [note, setNote] = useState({
     title: "",
@@ -123,9 +136,23 @@ function handleEdit(id) {
 
 
 
+
+
 return (
+
+
+  
   <div>
+
+    
+
+
     <h1>Advanced Notes App</h1>
+
+
+   <NoteForm note={note} />
+
+
     <p>Total Notes: {notes.length}</p>
 
     <input
@@ -166,7 +193,7 @@ return (
     {notes.map((note, index) => (
       <div key={note.id}>
         <h3>{note.title}</h3>
-        <small>ID: {note.id}</small>
+        
         <p>{note.description || "No description"}</p>
 
         
