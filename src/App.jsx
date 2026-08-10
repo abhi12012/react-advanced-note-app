@@ -37,7 +37,9 @@ function App() {
   }
 
 
-  if (editingId !== null) {
+
+
+if (editingId !== null) {
   const updatedNotes = notes.map((item) =>
     item.id === editingId ? { ...note, id: editingId } : item
   );
@@ -57,6 +59,17 @@ function App() {
   };
 
   setNotes([...notes, newNote]);
+
+  setNote({
+    title: "",
+    description: ""
+  });
+}
+
+
+
+function handleCancelEdit() {
+  setEditingId(null);
 
   setNote({
     title: "",
@@ -141,17 +154,10 @@ return (
 
 
 {editingId !== null && (
-  <button onClick={() => {
-    setEditingId(null);
-    setNote({
-      title: "",
-      description: ""
-    });
-  }}>
+  <button onClick={handleCancelEdit}>
     Cancel Edit
   </button>
 )}
-
 
 
 
