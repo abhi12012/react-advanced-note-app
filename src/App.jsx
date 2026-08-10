@@ -2,7 +2,13 @@ import { useState } from "react";
 
 
 
-function NoteForm({ note, handleChange }) {
+function NoteForm({
+  note,
+  handleChange,
+  handleAddNote,
+  editingId,
+  handleCancelEdit
+}) {
   return (
     <div>
       <h2>Note Form</h2>
@@ -23,9 +29,20 @@ function NoteForm({ note, handleChange }) {
   onChange={handleChange}
 />
 
+<button onClick={handleAddNote}>
+  {editingId !== null ? "Update Note" : "Add Note"}
+</button>
 
 
-    </div>
+
+{editingId !== null && (
+  <button onClick={handleCancelEdit}>
+    Cancel Edit
+  </button>
+)}
+
+
+  </div>
   );
 }
 
@@ -171,8 +188,9 @@ return (
   note={note}
   handleChange={handleChange}
   handleAddNote={handleAddNote}
+  editingId={editingId}
+  handleCancelEdit={handleCancelEdit}
 />
-
 
     <p>Total Notes: {notes.length}</p>
 
@@ -181,10 +199,6 @@ return (
     
 
 
-
-    <button onClick={handleAddNote}>
-  {editingId !== null ? "Update Note" : "Add Note"}
-</button>
 
 
 
