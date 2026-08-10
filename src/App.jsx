@@ -2,11 +2,16 @@ import { useState } from "react";
 
 
 
-function NoteForm() {
+function NoteForm({ note }) {
   return (
     <div>
       <h2>Note Form</h2>
-
+       <input
+  name="title"
+  type="text"
+  placeholder="Enter note title"
+  value={note.title}
+/>
       
     </div>
   );
