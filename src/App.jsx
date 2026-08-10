@@ -68,6 +68,12 @@ function App() {
 
 
  function handleDelete(id) {
+  const shouldDelete = window.confirm("Are you sure you want to delete this note?");
+
+  if (!shouldDelete) {
+    return;
+  }
+
   const updatedNotes = notes.filter((note) => note.id !== id);
 
   setNotes(updatedNotes);
