@@ -166,6 +166,7 @@ return (
     {notes.map((note, index) => (
       <div key={note.id}>
         <h3>{note.title}</h3>
+        <small>ID: {note.id}</small>
         <p>{note.description || "No description"}</p>
 
         
