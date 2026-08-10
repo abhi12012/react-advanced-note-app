@@ -176,22 +176,9 @@ return (
 
     <p>Total Notes: {notes.length}</p>
 
-    <input
-      name="title"
-      type="text"
-      placeholder="Enter note title"
-      value={note.title}
-      onChange={handleChange}
-    />
+    
 
-    <textarea
-      name="description"
-      placeholder="Enter note description"
-      
-      value={note.description}
-      onChange={handleChange}
-    />
-
+    
 
 
 
