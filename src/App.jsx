@@ -2,7 +2,7 @@ import { useState } from "react";
 
 
 
-function NoteForm({ note }) {
+function NoteForm({ note, handleChange }) {
   return (
     <div>
       <h2>Note Form</h2>
@@ -11,8 +11,20 @@ function NoteForm({ note }) {
   type="text"
   placeholder="Enter note title"
   value={note.title}
+  onChange={handleChange}
 />
       
+
+
+<textarea
+  name="description"
+  placeholder="Enter note description"
+  value={note.description}
+  onChange={handleChange}
+/>
+
+
+
     </div>
   );
 }
@@ -155,7 +167,11 @@ return (
     <h1>Advanced Notes App</h1>
 
 
-   <NoteForm note={note} />
+   <NoteForm
+  note={note}
+  handleChange={handleChange}
+  handleAddNote={handleAddNote}
+/>
 
 
     <p>Total Notes: {notes.length}</p>
