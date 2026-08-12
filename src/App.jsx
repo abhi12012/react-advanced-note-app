@@ -160,7 +160,7 @@ function handleEdit(id) {
 
   
 
-  setNote(noteToEdit);
+ 
 
   
 
@@ -202,11 +202,6 @@ return (
 
 
 
-{editingId !== null && (
-  <button onClick={handleCancelEdit}>
-    Cancel Edit
-  </button>
-)}
 
 
 
