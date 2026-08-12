@@ -1,50 +1,9 @@
 import { useState } from "react";
+import NoteForm from "./components/NoteForm";
 
 
 
-function NoteForm({
-  note,
-  handleChange,
-  handleAddNote,
-  editingId,
-  handleCancelEdit
-}) {
-  return (
-    <div>
-      <h2>Note Form</h2>
-       <input
-  name="title"
-  type="text"
-  placeholder="Enter note title"
-  value={note.title}
-  onChange={handleChange}
-/>
-      
 
-
-<textarea
-  name="description"
-  placeholder="Enter note description"
-  value={note.description}
-  onChange={handleChange}
-/>
-
-<button onClick={handleAddNote}>
-  {editingId !== null ? "Update Note" : "Add Note"}
-</button>
-
-
-
-{editingId !== null && (
-  <button onClick={handleCancelEdit}>
-    Cancel Edit
-  </button>
-)}
-
-
-  </div>
-  );
-}
 
 
 function App() {
@@ -207,7 +166,7 @@ return (
 
     {notes.length === 0 && <p>No notes available.</p>}
 
-    {notes.map((note, index) => (
+    {notes.map((note) => (
       <div key={note.id}>
         <h3>{note.title}</h3>
         

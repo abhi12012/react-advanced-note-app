@@ -1,13 +1,41 @@
-function NoteForm() {
+function NoteForm({
+  note,
+  handleChange,
+  handleAddNote,
+  editingId,
+  handleCancelEdit
+}) {
   return (
     <div>
-      <h2>Add New Note</h2>
+      <h2>Note Form</h2>
 
-      <input type="text" placeholder="Enter your note" />
+      <input
+        name="title"
+        type="text"
+        placeholder="Enter note title"
+        value={note.title}
+        onChange={handleChange}
+      />
 
-      <button>Add Note</button>
+      <textarea
+        name="description"
+        placeholder="Enter note description"
+        value={note.description}
+        onChange={handleChange}
+      />
+
+      <button onClick={handleAddNote}>
+        {editingId !== null ? "Update Note" : "Add Note"}
+      </button>
+
+      {editingId !== null && (
+        <button onClick={handleCancelEdit}>
+          Cancel Edit
+        </button>
+      )}
     </div>
   );
 }
+
 
 export default NoteForm;
