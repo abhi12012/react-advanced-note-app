@@ -1,5 +1,6 @@
 import { useState } from "react";
 import NoteForm from "./components/NoteForm";
+import NoteList from "./components/NoteList";
 
 
 
@@ -12,6 +13,7 @@ function App() {
     description: ""
   });
 
+  
   const [editingId, setEditingId] = useState(null);
 
   
@@ -153,10 +155,11 @@ return (
 
     <p>Total Notes: {notes.length}</p>
 
-    
+    <NoteList notes={notes} />
 
     
 
+    
 
 
 
@@ -164,29 +167,7 @@ return (
 
 
 
-    {notes.length === 0 && <p>No notes available.</p>}
 
-    {notes.map((note) => (
-      <div key={note.id}>
-        <h3>{note.title}</h3>
-        
-        <p>{note.description || "No description"}</p>
-
-        
-
-
-   <div>
-  <button onClick={() => handleEdit(note.id)}>
-    Edit
-  </button>
-
-  <button onClick={() => handleDelete(note.id)}>
-    Delete
-  </button>
-</div>
-
-      </div>
-    ))}
   </div>
 );
 
