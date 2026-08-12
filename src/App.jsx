@@ -151,13 +151,19 @@ return (
   handleAddNote={handleAddNote}
   editingId={editingId}
   handleCancelEdit={handleCancelEdit}
+
+
+
+
+
 />
 
     <p>Total Notes: {notes.length}</p>
-
-    <NoteList notes={notes} />
-
-    
+<NoteList
+  notes={notes}
+  handleEdit={handleEdit}
+  handleDelete={handleDelete}
+/>
 
     
  </div>
