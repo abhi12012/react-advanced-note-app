@@ -1,3 +1,6 @@
+import NotesContext from "./context/NotesContext";
+
+
 import { useState } from "react";
 import NoteForm from "./components/NoteForm";
 import NoteList from "./components/NoteList";
@@ -128,7 +131,7 @@ function handleEdit(id) {
 
 return (
 
-
+ <NotesContext.Provider value={{ message: "Hello Context" }}>
   
   <div>
 
@@ -161,6 +164,8 @@ return (
 
     
  </div>
+
+   </NotesContext.Provider>
 );
 
 

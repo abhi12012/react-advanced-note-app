@@ -1,9 +1,15 @@
+import { useContext } from "react";
+import NotesContext from "../context/NotesContext";
+
 function NoteItem({ note, handleEdit, handleDelete }) {
+  const { message } = useContext(NotesContext);
   return (
     <div>
       <h3>{note.title}</h3>
 
       <p>{note.description || "No description"}</p>
+
+      <p>{message}</p>
 
       <button onClick={() => handleEdit(note.id)}>
         Edit
