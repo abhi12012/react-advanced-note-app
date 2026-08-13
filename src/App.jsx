@@ -131,7 +131,13 @@ function handleEdit(id) {
 
 return (
 
- <NotesContext.Provider value={{ message: "Hello Context" }}>
+ <NotesContext.Provider
+  value={{
+    notes,
+    handleEdit,
+    handleDelete
+  }}
+>
   
   <div>
 
