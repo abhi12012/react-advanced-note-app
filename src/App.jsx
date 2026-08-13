@@ -105,13 +105,6 @@ function handleCancelEdit() {
 
 
 
-
-
-
-
-
-
-
 function handleEdit(id) {
   
 
@@ -159,6 +152,7 @@ return (
 />
 
     <p>Total Notes: {notes.length}</p>
+
 <NoteList
   notes={notes}
   handleEdit={handleEdit}
