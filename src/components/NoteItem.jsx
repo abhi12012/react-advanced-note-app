@@ -1,4 +1,4 @@
-function NoteItem({ note, handleEdit }) {
+function NoteItem({ note, handleEdit, handleDelete }) {
   return (
     <div>
       <h3>{note.title}</h3>
