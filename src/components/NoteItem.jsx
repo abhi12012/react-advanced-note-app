@@ -1,10 +1,6 @@
-import { useContext } from "react";
-import NotesContext from "../context/NotesContext";
 
 
-function NoteItem({ note, handleDelete }) {
-  const { handleEdit } = useContext(NotesContext);
-
+function NoteItem({ note, handleDelete, handleEdit }) {
   return (
     <div>
       <h3>{note.title}</h3>

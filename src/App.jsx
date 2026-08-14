@@ -172,6 +172,7 @@ return (
 <NoteList
   notes={notes}
   handleDelete={handleDelete}
+  handleEdit={handleEdit}
 />
 
 

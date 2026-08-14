@@ -1,6 +1,6 @@
 import NoteItem from "./NoteItem";
 
-function NoteList({ notes, handleDelete }) {
+function NoteList({ notes, handleDelete, handleEdit }) {
   return (
     <div>
       <h2>Note List</h2>
@@ -14,8 +14,8 @@ function NoteList({ notes, handleDelete }) {
   key={note.id}
   note={note}
   handleDelete={handleDelete}
+  handleEdit={handleEdit}
 />
-
 
 ))}
     </div>
