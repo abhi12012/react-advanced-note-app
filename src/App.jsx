@@ -169,7 +169,10 @@ return (
 
     <p>Total Notes: {notes.length}</p>
 
-<NoteList notes={notes} />
+<NoteList
+  notes={notes}
+  handleDelete={handleDelete}
+/>
 
 
 
