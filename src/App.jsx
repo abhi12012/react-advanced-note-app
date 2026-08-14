@@ -1,5 +1,3 @@
-import { NotesProvider } from "./context/NotesContext";
-import NotesContext from "./context/NotesContext";
 
 
 import { useState } from "react";
@@ -132,19 +130,6 @@ function handleEdit(id) {
 
 return (
 
-  <NotesProvider
-  notes={notes}
-  setNotes={setNotes}
->
-  
-
- <NotesContext.Provider
-  value={{
-    notes,
-    handleEdit,
-    handleDelete
-  }}
->
   
   
   <div>
@@ -181,10 +166,7 @@ return (
     
  </div>
 
-   </NotesContext.Provider>
-    
-    </NotesProvider>
-
+   
 
 
 );
