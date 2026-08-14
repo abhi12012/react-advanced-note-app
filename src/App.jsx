@@ -1,3 +1,4 @@
+import { NotesProvider } from "./context/NotesContext";
 import NotesContext from "./context/NotesContext";
 
 
@@ -131,6 +132,8 @@ function handleEdit(id) {
 
 return (
 
+  <NotesProvider>
+
  <NotesContext.Provider
   value={{
     notes,
@@ -138,6 +141,7 @@ return (
     handleDelete
   }}
 >
+  
   
   <div>
 
@@ -154,24 +158,27 @@ return (
   editingId={editingId}
   handleCancelEdit={handleCancelEdit}
 
-
-
-
-
 />
+
+
+
+
 
     <p>Total Notes: {notes.length}</p>
 
-<NoteList
-  notes={notes}
-  handleEdit={handleEdit}
-  handleDelete={handleDelete}
-/>
+<NoteList notes={notes} />
+
+
 
     
  </div>
 
    </NotesContext.Provider>
+    
+    </NotesProvider>
+
+
+
 );
 
 
