@@ -6,9 +6,7 @@ const NotesContext = createContext();
 
 
 
-function NotesProvider({ children }) {
-  const [notes, setNotes] = useState([]);
-
+function NotesProvider({ children, notes, setNotes }) {
  
   function handleDelete(id) {
     const shouldDelete = window.confirm(
@@ -23,6 +21,8 @@ function NotesProvider({ children }) {
 
     setNotes(updatedNotes);
   }
+
+  
 
   return (
     <NotesContext.Provider

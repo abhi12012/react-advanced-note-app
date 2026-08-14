@@ -132,7 +132,10 @@ function handleEdit(id) {
 
 return (
 
-  <NotesProvider>
+  <NotesProvider
+  notes={notes}
+  setNotes={setNotes}
+>
 
  <NotesContext.Provider
   value={{
