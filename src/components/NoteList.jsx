@@ -26,12 +26,12 @@ console.log("Context handleEdit:", handleEditFromContext);
 
       {notes.map((note) => (
 
-        <NoteItem
+
+       <NoteItem
   key={note.id}
   note={note}
-  handleDelete={handleDeleteFromContext}
-  handleEdit={handleEditFromContext}
 />
+
       ))}
     </div>
   );
