@@ -201,10 +201,10 @@ return (
     <NotesContext.Provider value={notes}>
 
 <NoteList
-  notes={notes}
   handleDelete={handleDelete}
   handleEdit={handleEdit}
 />
+
 </NotesContext.Provider>
 
 
