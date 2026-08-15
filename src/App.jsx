@@ -206,14 +206,15 @@ return (
     <NotesContext.Provider
   value={{
     notes,
-    handleDelete
+    handleDelete,
+    handleEdit
   }}
 >
 
-<NoteList
-  handleDelete={handleDelete}
-  handleEdit={handleEdit}
-/>
+
+<NoteList />
+
+
 
 </NotesContext.Provider>
 

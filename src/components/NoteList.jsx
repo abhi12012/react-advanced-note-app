@@ -6,15 +6,16 @@ import NoteItem from "./NoteItem";
 
 
 
-function NoteList({
-  handleEdit
-}) {
+function NoteList() {
 
-  const {
+ const {
   notes,
-  handleDelete: handleDeleteFromContext
+  handleDelete: handleDeleteFromContext,
+  handleEdit: handleEditFromContext
 } = useContext(NotesContext);
 
+
+console.log("Context handleEdit:", handleEditFromContext);
   
   
   return (
@@ -26,11 +27,11 @@ function NoteList({
       {notes.map((note) => (
 
         <NoteItem
-          key={note.id}
-          note={note}
-         handleDelete={handleDeleteFromContext}
-          handleEdit={handleEdit}
-        />
+  key={note.id}
+  note={note}
+  handleDelete={handleDeleteFromContext}
+  handleEdit={handleEditFromContext}
+/>
       ))}
     </div>
   );
