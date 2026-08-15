@@ -1,3 +1,5 @@
+import NotesProvider from "./context/NotesProvider";
+
 import NotesContext from "./context/NotesContext";
 
 import { useReducer, useState } from "react";
@@ -174,7 +176,7 @@ function handleEdit(id) {
 return (
 
   
-  
+  <NotesProvider>
   <div>
 
     
@@ -223,7 +225,7 @@ return (
  </div>
 
    
-
+</NotesProvider>
 
 );
 
