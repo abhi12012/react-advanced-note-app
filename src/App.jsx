@@ -16,6 +16,15 @@ function notesReducer(state, action) {
     case "DELETE_NOTE":
       return state.filter((note) => note.id !== action.payload);
 
+      case "UPDATE_NOTE":
+  return state.map((note) =>
+    note.id === action.payload.id
+      ? action.payload.updatedNote
+      : note
+  );
+
+  
+
     default:
       return state;
   }
@@ -72,17 +81,21 @@ function App() {
 
 
 if (editingId !== null) {
-  const updatedNotes = notes.map((item) =>
-    item.id === editingId ? { ...note, id: editingId } : item
-  );
-
-  setNotes(updatedNotes);
+  dispatch({
+    type: "UPDATE_NOTE",
+    payload: {
+      id: editingId,
+      updatedNote: {
+        ...note,
+        id: editingId
+      }
+    }
+  });
 
   setEditingId(null);
 
   return;
 }
-
 
 
     const newNote = {
@@ -120,18 +133,19 @@ function handleCancelEdit() {
 
 
  function handleDelete(id) {
-  const shouldDelete = window.confirm("Are you sure you want to delete this note?");
+  const shouldDelete = window.confirm(
+    "Are you sure you want to delete this note?"
+  );
 
   if (!shouldDelete) {
     return;
   }
 
-  const updatedNotes = notes.filter((note) => note.id !== id);
-
-  setNotes(updatedNotes);
+  dispatch({
+    type: "DELETE_NOTE",
+    payload: id
+  });
 }
-
-
 
 
 
