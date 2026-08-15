@@ -198,7 +198,17 @@ return (
 
     <p>Total Notes: {notes.length}</p>
 
-    <NotesContext.Provider value={notes}>
+
+
+
+    
+
+    <NotesContext.Provider
+  value={{
+    notes,
+    handleDelete
+  }}
+>
 
 <NoteList
   handleDelete={handleDelete}

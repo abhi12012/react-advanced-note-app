@@ -7,14 +7,15 @@ import NoteItem from "./NoteItem";
 
 
 function NoteList({
-  handleDelete,
   handleEdit
 }) {
 
+  const {
+  notes,
+  handleDelete: handleDeleteFromContext
+} = useContext(NotesContext);
 
-  const notes = useContext(NotesContext);
-
-  console.log("Context notes:", notes);
+  
   
   return (
     <div>
@@ -27,7 +28,7 @@ function NoteList({
         <NoteItem
           key={note.id}
           note={note}
-          handleDelete={handleDelete}
+         handleDelete={handleDeleteFromContext}
           handleEdit={handleEdit}
         />
       ))}
