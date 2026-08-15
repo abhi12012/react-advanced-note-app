@@ -1,4 +1,4 @@
-
+import NotesContext from "./context/NotesContext";
 
 import { useReducer, useState } from "react";
 
@@ -198,12 +198,14 @@ return (
 
     <p>Total Notes: {notes.length}</p>
 
+    <NotesContext.Provider value={notes}>
+
 <NoteList
   notes={notes}
   handleDelete={handleDelete}
   handleEdit={handleEdit}
 />
-
+</NotesContext.Provider>
 
 
     
