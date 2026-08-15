@@ -1,8 +1,27 @@
 
 
-import { useState } from "react";
+import { useReducer, useState } from "react";
+
+
 import NoteForm from "./components/NoteForm";
 import NoteList from "./components/NoteList";
+
+
+
+function notesReducer(state, action) {
+  switch (action.type) {
+    case "ADD_NOTE":
+      return [...state, action.payload];
+
+    case "DELETE_NOTE":
+      return state.filter((note) => note.id !== action.payload);
+
+    default:
+      return state;
+  }
+}
+
+const initialNotes = [];
 
 
 
