@@ -30,7 +30,14 @@ function notesReducer(state, action) {
   }
 }
 
-const initialNotes = [];
+const initialState = {
+  notes: [],
+  note: {
+    title: "",
+    description: ""
+  },
+  editingId: null
+};
 
 
 
