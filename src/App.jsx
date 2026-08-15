@@ -40,7 +40,10 @@ function App() {
   
 
 
-  const [notes, setNotes] = useState([]);
+ const [notes, dispatch] = useReducer(
+  notesReducer,
+  initialNotes
+);
 
 
 
@@ -87,7 +90,14 @@ if (editingId !== null) {
     id: Date.now()
   };
 
-  setNotes([...notes, newNote]);
+
+
+  dispatch({
+  type: "ADD_NOTE",
+  payload: newNote
+});
+
+
 
   setNote({
     title: "",
