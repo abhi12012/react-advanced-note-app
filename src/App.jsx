@@ -1,3 +1,5 @@
+import { useContext } from "react";
+
 import NotesContext from "./context/NotesContext";
 
 import { useReducer, useState } from "react";
@@ -5,6 +7,8 @@ import { useReducer, useState } from "react";
 
 import NoteForm from "./components/NoteForm";
 import NoteList from "./components/NoteList";
+
+
 
 
 
@@ -47,7 +51,7 @@ function App() {
   const [editingId, setEditingId] = useState(null);
 
   
-
+const { notes: contextNotes } = useContext(NotesContext);
 
  const [notes, dispatch] = useReducer(
   notesReducer,
@@ -196,7 +200,7 @@ return (
 
 
 
-    <p>Total Notes: {notes.length}</p>
+   <p>Total Notes: {contextNotes.length}</p>
 
 
 
