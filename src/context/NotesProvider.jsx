@@ -31,11 +31,29 @@ function NotesProvider({ children }) {
     initialNotes
   );
 
+
+  function handleDelete(id) {
+  const shouldDelete = window.confirm(
+    "Are you sure you want to delete this note?"
+  );
+
+  if (!shouldDelete) {
+    return;
+  }
+
+  dispatch({
+    type: "DELETE_NOTE",
+    payload: id
+  });
+}
+
+
   return (
     <NotesContext.Provider
       value={{
         notes,
-        dispatch
+        dispatch,
+        handleDelete
       }}
     >
       {children}

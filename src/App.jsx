@@ -2,7 +2,7 @@ import NotesProvider from "./context/NotesProvider";
 
 import NotesContext from "./context/NotesContext";
 
-import { useReducer, useState } from "react";
+import { useContext, useReducer, useState } from "react";
 
 
 import NoteForm from "./components/NoteForm";
@@ -49,6 +49,11 @@ function App() {
   const [editingId, setEditingId] = useState(null);
 
   
+const {
+  notes: contextNotes,
+  dispatch: contextDispatch
+} = useContext(NotesContext);
+
 
 
  const [notes, dispatch] = useReducer(
@@ -176,7 +181,7 @@ function handleEdit(id) {
 return (
 
   
-  <NotesProvider>
+  
   <div>
 
     
@@ -225,7 +230,7 @@ return (
  </div>
 
    
-</NotesProvider>
+
 
 );
 
