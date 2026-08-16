@@ -1,3 +1,5 @@
+import useNotes from "../hooks/useNotes";
+
 import { useContext } from "react";
 import NotesContext from "../context/NotesContext";
 
@@ -10,8 +12,9 @@ function NoteList({ onEdit }) {
 
  const {
   notes
-} = useContext(NotesContext);
+} = useNotes();
 
+const notesData = useNotes();
 
 
   
