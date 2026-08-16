@@ -207,22 +207,7 @@ return (
 
     
 
-    <NotesContext.Provider
-  value={{
-    notes,
-    handleDelete,
-    handleEdit
-  }}
->
-
-
-<NoteList />
-
-
-
-</NotesContext.Provider>
-
-
+    <NoteList />
     
  </div>
 

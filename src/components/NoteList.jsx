@@ -14,8 +14,8 @@ function NoteList() {
   handleEdit: handleEditFromContext
 } = useContext(NotesContext);
 
+console.log("NoteList notes:", notes);
 
-console.log("Context handleEdit:", handleEditFromContext);
   
   
   return (

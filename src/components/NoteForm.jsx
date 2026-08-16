@@ -1,10 +1,17 @@
+import { useContext } from "react";
+import NotesContext from "../context/NotesContext";
+
 function NoteForm({
+  
   note,
   handleChange,
   handleAddNote,
   editingId,
   handleCancelEdit
 }) {
+
+const { addNote } = useContext(NotesContext);
+console.log("NoteForm note:", note);
   return (
     <div>
       <h2>Note Form</h2>
@@ -24,7 +31,7 @@ function NoteForm({
         onChange={handleChange}
       />
 
-      <button onClick={handleAddNote}>
+      <button onClick={() => addNote(note)}>
         {editingId !== null ? "Update Note" : "Add Note"}
       </button>
 
