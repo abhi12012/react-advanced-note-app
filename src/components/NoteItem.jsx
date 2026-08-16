@@ -8,9 +8,11 @@ function NoteItem({
 }) {
 
   const {
-    handleDelete: handleDeleteFromContext,
-    handleEdit: handleEditFromContext
-  } = useContext(NotesContext);
+  deleteNote,
+  handleEdit: handleEditFromContext
+} = useContext(NotesContext);
+
+
   return (
     <div>
       <h3>{note.title}</h3>
@@ -22,9 +24,10 @@ function NoteItem({
 </button>
 
 
-      <button onClick={() => handleDeleteFromContext(note.id)}>
+      <button onClick={() => deleteNote(note.id)}>
   Delete
 </button>
+
     </div>
   );
 }

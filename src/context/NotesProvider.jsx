@@ -12,6 +12,12 @@ function notesReducer(state, action) {
     case "ADD_NOTE":
   return [...state, action.payload];
 
+
+  case "DELETE_NOTE":
+  return state.filter(
+    (note) => note.id !== action.payload
+  );
+
     default:
       return state;
   }
@@ -31,17 +37,28 @@ function addNote(note) {
   console.log("Provider addNote:", note);
   dispatch({
     type: "ADD_NOTE",
-    payload: note
+  payload: {
+  ...note,
+  id: Date.now()
+}
   });
 }
 
+
+function deleteNote(id) {
+  dispatch({
+    type: "DELETE_NOTE",
+    payload: id
+  });
+}
 
   return (
     <NotesContext.Provider
   value={{
     notes,
     dispatch,
-    addNote
+    addNote,
+    deleteNote
   }}
 >
       {children}
