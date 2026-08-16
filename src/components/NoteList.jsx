@@ -6,15 +6,13 @@ import NoteItem from "./NoteItem";
 
 
 
-function NoteList() {
+function NoteList({ onEdit }) {
 
  const {
-  notes,
-  handleDelete: handleDeleteFromContext,
-  handleEdit: handleEditFromContext
+  notes
 } = useContext(NotesContext);
 
-console.log("NoteList notes:", notes);
+
 
   
   
@@ -30,6 +28,7 @@ console.log("NoteList notes:", notes);
        <NoteItem
   key={note.id}
   note={note}
+  onEdit={onEdit}
 />
 
       ))}

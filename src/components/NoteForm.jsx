@@ -31,11 +31,13 @@ console.log("NoteForm note:", note);
         onChange={handleChange}
       />
 
-      <button onClick={() => addNote(note)}>
+      <button onClick={handleAddNote}>
+
         {editingId !== null ? "Update Note" : "Add Note"}
       </button>
 
       {editingId !== null && (
+
         <button onClick={handleCancelEdit}>
           Cancel Edit
         </button>

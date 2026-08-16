@@ -18,6 +18,13 @@ function notesReducer(state, action) {
     (note) => note.id !== action.payload
   );
 
+  case "UPDATE_NOTE":
+  return state.map((note) =>
+    note.id === action.payload.id
+      ? action.payload.updatedNote
+      : note
+  );
+
     default:
       return state;
   }
@@ -45,11 +52,36 @@ function addNote(note) {
 }
 
 
+
+
+
+
+
 function deleteNote(id) {
   dispatch({
     type: "DELETE_NOTE",
     payload: id
   });
+}
+
+
+
+function updateNote(id, updatedNote) {
+  dispatch({
+    type: "UPDATE_NOTE",
+    payload: {
+      id,
+      updatedNote
+    }
+  });
+}
+
+
+
+function editNote(id) {
+  const noteToEdit = notes.find(
+    (note) => note.id === id
+  );
 }
 
   return (
@@ -58,7 +90,9 @@ function deleteNote(id) {
     notes,
     dispatch,
     addNote,
-    deleteNote
+    deleteNote,
+    editNote,
+    updateNote             
   }}
 >
       {children}

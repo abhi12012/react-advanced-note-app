@@ -51,7 +51,11 @@ function App() {
   const [editingId, setEditingId] = useState(null);
 
   
-const { notes: contextNotes } = useContext(NotesContext);
+const {
+  notes: contextNotes,
+  addNote,
+  updateNote
+} = useContext(NotesContext);
 
  const [notes, dispatch] = useReducer(
   notesReducer,
@@ -85,21 +89,16 @@ const { notes: contextNotes } = useContext(NotesContext);
 
 
 if (editingId !== null) {
-  dispatch({
-    type: "UPDATE_NOTE",
-    payload: {
-      id: editingId,
-      updatedNote: {
-        ...note,
-        id: editingId
-      }
-    }
+  updateNote(editingId, {
+    ...note,
+    id: editingId
   });
 
   setEditingId(null);
 
   return;
 }
+
 
 
     const newNote = {
@@ -109,17 +108,7 @@ if (editingId !== null) {
 
 
 
-  dispatch({
-  type: "ADD_NOTE",
-  payload: newNote
-});
-
-
-
-  setNote({
-    title: "",
-    description: ""
-  });
+ addNote(note);
 }
 
 
@@ -154,23 +143,10 @@ function handleCancelEdit() {
 
 
 
-function handleEdit(id) {
-  
-
-  setEditingId(id);
-
-  const noteToEdit = notes.find((note) => note.id === id);
-
-  
-
- 
-
-  
-
+function handleEdit(noteToEdit) {
+  setEditingId(noteToEdit.id);
   setNote(noteToEdit);
 }
-
-
 
 
 
@@ -207,7 +183,7 @@ return (
 
     
 
-    <NoteList />
+    <NoteList onEdit={handleEdit} />
     
  </div>
 

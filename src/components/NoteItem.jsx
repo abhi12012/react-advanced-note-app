@@ -4,14 +4,12 @@ import NotesContext from "../context/NotesContext";
 
 function NoteItem({
   note,
-  handleEdit
+  onEdit
 }) {
 
   const {
-  deleteNote,
-  handleEdit: handleEditFromContext
+  deleteNote
 } = useContext(NotesContext);
-
 
   return (
     <div>
@@ -19,10 +17,9 @@ function NoteItem({
 
       <p>{note.description || "No description"}</p>
 
-      <button onClick={() => handleEditFromContext(note.id)}>
+<button onClick={() => onEdit(note)}>
   Edit
 </button>
-
 
       <button onClick={() => deleteNote(note.id)}>
   Delete
