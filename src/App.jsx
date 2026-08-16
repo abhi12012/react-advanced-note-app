@@ -8,6 +8,8 @@ import { useState } from "react";
 import NoteForm from "./components/NoteForm";
 import NoteList from "./components/NoteList";
 
+import useNotes from "./hooks/useNotes";
+
 
 
 
@@ -31,8 +33,7 @@ const {
   addNote,
   deleteNote,
   updateNote
-} = useContext(NotesContext);
-
+} = useNotes();
 
 
  
