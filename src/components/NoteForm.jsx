@@ -11,7 +11,7 @@ function NoteForm({
 }) {
 
 const { addNote } = useContext(NotesContext);
-console.log("NoteForm note:", note);
+
   return (
     <div>
       <h2>Note Form</h2>

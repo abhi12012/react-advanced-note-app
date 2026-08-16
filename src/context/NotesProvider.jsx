@@ -41,7 +41,7 @@ function NotesProvider({ children }) {
 
 
 function addNote(note) {
-  console.log("Provider addNote:", note);
+  
   dispatch({
     type: "ADD_NOTE",
   payload: {

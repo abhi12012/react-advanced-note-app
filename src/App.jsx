@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import NotesContext from "./context/NotesContext";
 
-import { useReducer, useState } from "react";
+import { useState } from "react";
 
 
 import NoteForm from "./components/NoteForm";
@@ -10,31 +10,6 @@ import NoteList from "./components/NoteList";
 
 
 
-
-
-function notesReducer(state, action) {
-  switch (action.type) {
-    case "ADD_NOTE":
-      return [...state, action.payload];
-
-    case "DELETE_NOTE":
-      return state.filter((note) => note.id !== action.payload);
-
-      case "UPDATE_NOTE":
-  return state.map((note) =>
-    note.id === action.payload.id
-      ? action.payload.updatedNote
-      : note
-  );
-
-  
-
-    default:
-      return state;
-  }
-}
-
-const initialNotes = [];
 
 
 
@@ -54,13 +29,14 @@ function App() {
 const {
   notes: contextNotes,
   addNote,
+  deleteNote,
   updateNote
 } = useContext(NotesContext);
 
- const [notes, dispatch] = useReducer(
-  notesReducer,
-  initialNotes
-);
+
+
+ 
+
 
 
 
@@ -134,10 +110,7 @@ function handleCancelEdit() {
     return;
   }
 
-  dispatch({
-    type: "DELETE_NOTE",
-    payload: id
-  });
+  deleteNote(id);
 }
 
 
