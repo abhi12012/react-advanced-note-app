@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import NotesContext from "../context/NotesContext";
+import useNotes from "../hooks/useNotes";
+
 
 
 function NoteItem({
@@ -7,9 +7,12 @@ function NoteItem({
   onEdit
 }) {
 
-  const {
+  
+const {
   deleteNote
-} = useContext(NotesContext);
+} = useNotes();
+
+
 
   return (
     <div>
