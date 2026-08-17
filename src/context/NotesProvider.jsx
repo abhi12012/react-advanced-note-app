@@ -1,5 +1,22 @@
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 import NotesContext from "./NotesContext";
+
+
+
+
+
+
+function getInitialNotes() {
+  const savedNotes = localStorage.getItem("notes");
+
+  if (!savedNotes) {
+    return [];
+  }
+
+  return JSON.parse(savedNotes);
+}
+
+
 
 
 
@@ -36,8 +53,15 @@ function NotesProvider({ children }) {
 
     const [notes, dispatch] = useReducer(
   notesReducer,
-  []
+  getInitialNotes()
 );
+
+
+
+useEffect(() => {
+  localStorage.setItem("notes", JSON.stringify(notes));
+}, [notes]);
+
 
 
 function addNote(note) {
