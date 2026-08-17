@@ -13,7 +13,11 @@ function getInitialNotes() {
     return [];
   }
 
-  return JSON.parse(savedNotes);
+  try {
+    return JSON.parse(savedNotes);
+  } catch {
+    return [];
+  }
 }
 
 
