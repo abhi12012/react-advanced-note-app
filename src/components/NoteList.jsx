@@ -38,4 +38,4 @@ function NoteList({ filteredNotes, onEdit }) {
   );
 }
 
-export default NoteList;
+export default memo(NoteList);

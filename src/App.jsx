@@ -3,7 +3,7 @@
 import useSearch from "./hooks/useSearch";
 import useSort from "./hooks/useSort";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 
 import NoteForm from "./components/NoteForm";
@@ -127,10 +127,10 @@ function handleCancelEdit() {
  
 
 
-function handleEdit(noteToEdit) {
+const handleEdit = useCallback((noteToEdit) => {
   setEditingId(noteToEdit.id);
   setNote(noteToEdit);
-}
+}, []);
 
 
 
