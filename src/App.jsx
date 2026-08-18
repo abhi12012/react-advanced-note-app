@@ -29,6 +29,11 @@ function App() {
   const filteredNotes = useSearch(notes, searchText);
   const sortedNotes = useSort(filteredNotes, sortBy);
 
+  const [categoryFilter, setCategoryFilter] = useState("all");
+
+
+  
+
   function handleChange(event) {
     const { name, value } = event.target;
 

@@ -31,6 +31,7 @@ function handleDelete() {
       <h3>{note.title}</h3>
 
       <p>{note.description || "No description"}</p>
+      <p>Category: {note.category || "General"}</p>
 
 <button onClick={() => onEdit(note)}>
   Edit
