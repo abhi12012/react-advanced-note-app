@@ -20,18 +20,19 @@ function NoteList({ filteredNotes, onEdit }) {
     <div>
       <h2>Note List</h2>
 
-      {notes.length === 0 && <p>No notes available.</p>}
-
-      {filteredNotes.map((note) => (
-
-
-       <NoteItem
-  key={note.id}
-  note={note}
-  onEdit={onEdit}
-/>
-
-      ))}
+     {notes.length === 0 ? (
+  <p>No notes available.</p>
+) : filteredNotes.length === 0 ? (
+  <p>No notes found.</p>
+) : (
+  filteredNotes.map((note) => (
+    <NoteItem
+      key={note.id}
+      note={note}
+      onEdit={onEdit}
+    />
+  ))
+)}
     </div>
   );
 }

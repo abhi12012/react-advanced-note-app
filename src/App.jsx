@@ -39,7 +39,7 @@ const {
 
 
 const filteredNotes = notes.filter((note) => {
-  const search = searchText.toLowerCase();
+  const search = searchText.toLowerCase().trim();
 
   return (
     note.title.toLowerCase().includes(search) ||
