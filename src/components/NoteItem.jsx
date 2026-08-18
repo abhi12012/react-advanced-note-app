@@ -14,6 +14,18 @@ const {
 
 
 
+function handleDelete() {
+  const shouldDelete = window.confirm(
+    "Are you sure you want to delete this note?"
+  );
+
+  if (!shouldDelete) {
+    return;
+  }
+
+  deleteNote(note.id);
+}
+
   return (
     <div>
       <h3>{note.title}</h3>
@@ -24,7 +36,7 @@ const {
   Edit
 </button>
 
-      <button onClick={() => deleteNote(note.id)}>
+    <button onClick={handleDelete}>
   Delete
 </button>
 
