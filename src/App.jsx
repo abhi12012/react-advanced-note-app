@@ -32,13 +32,15 @@ function App() {
 
   const [sortBy, setSortBy] = useState("newest");
 
+  const [error, setError] = useState("");
+
   
 const {
   notes,
   addNote,
   updateNote
 } = useNotes();
-const searchedNotes = useSearch(notes, searchText);
+
 
 
 
@@ -58,6 +60,7 @@ const sortedNotes = useSort(filteredNotes, sortBy);
       ...note,
       [name]: value
     });
+    setError("");
   }
 
 
@@ -67,13 +70,17 @@ const sortedNotes = useSort(filteredNotes, sortBy);
 
  function handleAddNote() {
   if (note.title.trim() === "") {
+    setError("Title is required");
     return;
   }
 
+  setError("");
+
+  if (editingId !== null) {
+
+    
 
 
-
-if (editingId !== null) {
   updateNote(editingId, {
     ...note,
     id: editingId
@@ -154,6 +161,9 @@ return (
 </select>
 
 
+
+
+{error && <p>{error}</p>}
    <NoteForm
   note={note}
   handleChange={handleChange}
