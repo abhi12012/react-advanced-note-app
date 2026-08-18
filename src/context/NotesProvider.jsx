@@ -27,7 +27,7 @@ function getInitialNotes() {
 
 
 function notesReducer(state, action) {
-  console.log("Reducer:", state, action);
+  
   switch (action.type) {
 
     case "ADD_NOTE":
@@ -106,11 +106,6 @@ function updateNote(id, updatedNote) {
 
 
 
-function editNote(id) {
-  const noteToEdit = notes.find(
-    (note) => note.id === id
-  );
-}
 
   return (
     <NotesContext.Provider
@@ -119,7 +114,7 @@ function editNote(id) {
     dispatch,
     addNote,
     deleteNote,
-    editNote,
+    
     updateNote             
   }}
 >
