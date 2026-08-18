@@ -111,7 +111,7 @@ function updateNote(id, updatedNote) {
     <NotesContext.Provider
   value={{
     notes,
-    dispatch,
+    
     addNote,
     deleteNote,
     
