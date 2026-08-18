@@ -1,3 +1,5 @@
+import useCategoryFilter from "./hooks/useCategoryFilter";
+
 import Header from "./components/Header";
 import useSearch from "./hooks/useSearch";
 import useSort from "./hooks/useSort";
@@ -22,17 +24,28 @@ function App() {
 
   const [sortBy, setSortBy] = useState("newest");
 
+  const [categoryFilter, setCategoryFilter] = useState("all");
+
   const [error, setError] = useState("");
 
   const { notes, addNote, updateNote } = useNotes();
 
-  const filteredNotes = useSearch(notes, searchText);
-  const sortedNotes = useSort(filteredNotes, sortBy);
 
-  const [categoryFilter, setCategoryFilter] = useState("all");
+
+ const filteredNotes = useSearch(notes, searchText);
+
+const categoryNotes = useCategoryFilter(
+  filteredNotes,
+  categoryFilter
+);
+
+const sortedNotes = useSort(categoryNotes, sortBy);
 
 
   
+
+
+
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -120,6 +133,22 @@ function App() {
         value={searchText}
         onChange={(event) => setSearchText(event.target.value)}
       />
+
+
+
+      <select
+  value={categoryFilter}
+  onChange={(event) => setCategoryFilter(event.target.value)}
+>
+  <option value="all">All Categories</option>
+  <option value="General">General</option>
+  <option value="Work">Work</option>
+  <option value="Personal">Personal</option>
+  <option value="Learning">Learning</option>
+  <option value="Important">Important</option>
+</select>
+
+
 
       <select
         value={sortBy}
