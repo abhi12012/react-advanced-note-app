@@ -1,6 +1,5 @@
-import { useContext } from "react";
-import NotesContext from "../context/NotesContext";
-import useNotes from "../hooks/useNotes";
+
+
 
 function NoteForm({
   
@@ -11,7 +10,7 @@ function NoteForm({
   handleCancelEdit
 }) {
 
-const { addNote } = useNotes();
+
 
   return (
     <div>

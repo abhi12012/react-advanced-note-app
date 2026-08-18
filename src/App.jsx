@@ -1,5 +1,5 @@
 
-
+import Header from "./components/Header";
 import useSearch from "./hooks/useSearch";
 import useSort from "./hooks/useSort";
 
@@ -143,8 +143,13 @@ return (
 
     
 
+<Header
+  title="Advanced Notes App"
+  subtitle="Manage your notes"
+>
+  <p>Total Notes: {notes.length}</p>
+</Header>
 
-    <h1>Advanced Notes App</h1>
 
 
     <input
@@ -179,7 +184,7 @@ return (
 
 
 
-   <p>Total Notes: {notes.length}</p>
+   
 
 
 
