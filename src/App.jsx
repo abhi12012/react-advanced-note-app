@@ -1,6 +1,6 @@
-import { useContext } from "react";
 
-import NotesContext from "./context/NotesContext";
+
+
 
 import { useState } from "react";
 
@@ -85,7 +85,7 @@ if (editingId !== null) {
 
 
 
- addNote(note);
+ addNote(newNote);
 }
 
 
