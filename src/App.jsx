@@ -78,7 +78,7 @@ const sortedNotes = useSort(filteredNotes, sortBy);
 
   if (editingId !== null) {
 
-    
+
 
 
   updateNote(editingId, {
@@ -117,6 +117,8 @@ function handleCancelEdit() {
     title: "",
     description: ""
   });
+
+  setError("");
 }
 
 
