@@ -1,6 +1,6 @@
 
 
-
+import useSearch from "./hooks/useSearch";
 
 import { useState } from "react";
 
@@ -35,18 +35,11 @@ const {
   addNote,
   updateNote
 } = useNotes();
+const searchedNotes = useSearch(notes, searchText);
  
 
 
-const filteredNotes = notes.filter((note) => {
-  const search = searchText.toLowerCase().trim();
-
-  return (
-    note.title.toLowerCase().includes(search) ||
-    note.description.toLowerCase().includes(search)
-  );
-});
-
+const filteredNotes = useSearch(notes, searchText);
 
 
   function handleChange(event) {
