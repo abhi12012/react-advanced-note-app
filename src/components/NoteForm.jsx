@@ -31,6 +31,18 @@ function NoteForm({
         onChange={handleChange}
       />
 
+      <select
+  name="category"
+  value={note.category}
+  onChange={handleChange}
+>
+  <option value="General">General</option>
+  <option value="Work">Work</option>
+  <option value="Personal">Personal</option>
+  <option value="Learning">Learning</option>
+  <option value="Important">Important</option>
+</select>
+
       <button onClick={handleAddNote}>
 
         {editingId !== null ? "Update Note" : "Add Note"}

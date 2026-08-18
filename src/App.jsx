@@ -1,31 +1,21 @@
-
 import Header from "./components/Header";
 import useSearch from "./hooks/useSearch";
 import useSort from "./hooks/useSort";
 
 import { useCallback, useState } from "react";
 
-
 import NoteForm from "./components/NoteForm";
 import NoteList from "./components/NoteList";
 
 import useNotes from "./hooks/useNotes";
 
-
-
-
-
-
-
-
-
 function App() {
   const [note, setNote] = useState({
     title: "",
-    description: ""
+    description: "",
+    category: "General"
   });
 
-  
   const [editingId, setEditingId] = useState(null);
 
   const [searchText, setSearchText] = useState("");
@@ -34,24 +24,10 @@ function App() {
 
   const [error, setError] = useState("");
 
-  
-const {
-  notes,
-  addNote,
-  updateNote
-} = useNotes();
+  const { notes, addNote, updateNote } = useNotes();
 
-
-
-
- 
-
-
-const filteredNotes = useSearch(notes, searchText);
-const sortedNotes = useSort(filteredNotes, sortBy);
-
-
-
+  const filteredNotes = useSearch(notes, searchText);
+  const sortedNotes = useSort(filteredNotes, sortBy);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -60,148 +36,112 @@ const sortedNotes = useSort(filteredNotes, sortBy);
       ...note,
       [name]: value
     });
+
     setError("");
   }
 
+  function handleAddNote() {
+    if (note.title.trim() === "") {
+      setError("Title is required");
+      return;
+    }
 
+    setError("");
 
+    if (editingId !== null) {
+      updateNote(editingId, {
+        ...note,
+        id: editingId
+      });
 
+      setEditingId(null);
 
+      setNote({
+        title: "",
+        description: "",
+        category: "General"
+      });
 
- function handleAddNote() {
-  if (note.title.trim() === "") {
-    setError("Title is required");
-    return;
-  }
-
-  setError("");
-
-  if (editingId !== null) {
-
-
-
-
-  updateNote(editingId, {
-    ...note,
-    id: editingId
-  });
-
-  setEditingId(null);
-
-  setNote({
-  title: "",
-  description: ""
-});
-
-  return;
-}
-
-
+      return;
+    }
 
     const newNote = {
-    ...note,
-    id: Date.now()
-  };
+      ...note,
+      id: Date.now()
+    };
 
+    addNote(newNote);
 
+    setNote({
+      title: "",
+      description: "",
+      category: "General"
+    });
+  }
 
- addNote(newNote);
-}
+  function handleCancelEdit() {
+    setEditingId(null);
 
+    setNote({
+      title: "",
+      description: "",
+      category: "General"
+    });
 
+    setError("");
+  }
 
-function handleCancelEdit() {
-  setEditingId(null);
+  const handleEdit = useCallback((noteToEdit) => {
+    setEditingId(noteToEdit.id);
 
-  setNote({
-    title: "",
-    description: ""
-  });
+    setNote({
+      ...noteToEdit,
+      category: noteToEdit.category || "General"
+    });
+  }, []);
 
-  setError("");
-}
+  return (
+    <div>
+      <Header
+        title="Advanced Notes App"
+        subtitle="Manage your notes"
+      >
+        <p>Total Notes: {notes.length}</p>
+      </Header>
 
+      <input
+        type="text"
+        placeholder="Search notes..."
+        value={searchText}
+        onChange={(event) => setSearchText(event.target.value)}
+      />
 
+      <select
+        value={sortBy}
+        onChange={(event) => setSortBy(event.target.value)}
+      >
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="az">A → Z</option>
+        <option value="za">Z → A</option>
+      </select>
 
+      {error && <p>{error}</p>}
 
- 
+      <NoteForm
+        note={note}
+        handleChange={handleChange}
+        handleAddNote={handleAddNote}
+        editingId={editingId}
+        handleCancelEdit={handleCancelEdit}
+      />
 
-
-const handleEdit = useCallback((noteToEdit) => {
-  setEditingId(noteToEdit.id);
-  setNote(noteToEdit);
-}, []);
-
-
-
-
-return (
-
-  
-  
-  <div>
-
-    
-
-<Header
-  title="Advanced Notes App"
-  subtitle="Manage your notes"
->
-  <p>Total Notes: {notes.length}</p>
-</Header>
-
-
-
-    <input
-  type="text"
-  placeholder="Search notes..."
-  value={searchText}
-  onChange={(event) => setSearchText(event.target.value)}
-/>
-
-
-<select value={sortBy} onChange={(event) => setSortBy(event.target.value)}>
-  <option value="newest">Newest First</option>
-  <option value="oldest">Oldest First</option>
-  <option value="az">A → Z</option>
-  <option value="za">Z → A</option>
-</select>
-
-
-
-
-{error && <p>{error}</p>}
-   <NoteForm
-  note={note}
-  handleChange={handleChange}
-  handleAddNote={handleAddNote}
-  editingId={editingId}
-  handleCancelEdit={handleCancelEdit}
-
-/>
-
-
-
-
-
-   
-
-
-
-
-    
-<NoteList
-  filteredNotes={sortedNotes}
-  onEdit={handleEdit}
-/>
- </div>
-
-   
-
-
-);
-
-
+      <NoteList
+        filteredNotes={sortedNotes}
+        onEdit={handleEdit}
+      />
+    </div>
+  );
 }
 
 export default App;
