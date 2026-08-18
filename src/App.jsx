@@ -27,6 +27,8 @@ function App() {
   
   const [editingId, setEditingId] = useState(null);
 
+  const [searchText, setSearchText] = useState("");
+
   
 const {
   notes,
@@ -36,7 +38,14 @@ const {
  
 
 
+const filteredNotes = notes.filter((note) => {
+  const search = searchText.toLowerCase();
 
+  return (
+    note.title.toLowerCase().includes(search) ||
+    note.description.toLowerCase().includes(search)
+  );
+});
 
 
 
@@ -127,6 +136,14 @@ return (
     <h1>Advanced Notes App</h1>
 
 
+    <input
+  type="text"
+  placeholder="Search notes..."
+  value={searchText}
+  onChange={(event) => setSearchText(event.target.value)}
+/>
+
+
    <NoteForm
   note={note}
   handleChange={handleChange}
@@ -146,8 +163,10 @@ return (
 
 
     
-
-    <NoteList onEdit={handleEdit} />
+<NoteList
+  filteredNotes={filteredNotes}
+  onEdit={handleEdit}
+/>
     
  </div>
 

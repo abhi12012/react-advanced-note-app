@@ -6,7 +6,7 @@ import NoteItem from "./NoteItem";
 
 
 
-function NoteList({ onEdit }) {
+function NoteList({ filteredNotes, onEdit }) {
 
  const {
   notes
@@ -22,7 +22,7 @@ function NoteList({ onEdit }) {
 
       {notes.length === 0 && <p>No notes available.</p>}
 
-      {notes.map((note) => (
+      {filteredNotes.map((note) => (
 
 
        <NoteItem
