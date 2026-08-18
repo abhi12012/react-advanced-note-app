@@ -1,4 +1,7 @@
+import { useMemo } from "react";
+
 function useSearch(notes, searchText) {
+  
   const search = searchText.toLowerCase().trim();
 
   const filteredNotes = notes.filter((note) => {

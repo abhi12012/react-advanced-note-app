@@ -3,6 +3,7 @@ import useNotes from "../hooks/useNotes";
 
 import NoteItem from "./NoteItem";
 
+import { memo } from "react";
 
 
 
