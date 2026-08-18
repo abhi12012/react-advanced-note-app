@@ -29,6 +29,8 @@ function App() {
 
   const [searchText, setSearchText] = useState("");
 
+  const [sortBy, setSortBy] = useState("newest");
+
   
 const {
   notes,
@@ -36,10 +38,29 @@ const {
   updateNote
 } = useNotes();
 const searchedNotes = useSearch(notes, searchText);
+
+
+
  
 
 
 const filteredNotes = useSearch(notes, searchText);
+const displayNotes = [...filteredNotes];
+
+if (sortBy === "newest") {
+  displayNotes.sort((a, b) => b.id - a.id);
+}
+
+if (sortBy === "oldest") {
+  displayNotes.sort((a, b) => a.id - b.id);
+}
+
+if (sortBy === "az") {
+  displayNotes.sort((a, b) =>
+    a.title.localeCompare(b.title)
+  );
+}
+
 
 
   function handleChange(event) {
@@ -137,6 +158,14 @@ return (
 />
 
 
+<select value={sortBy} onChange={(event) => setSortBy(event.target.value)}>
+  <option value="newest">Newest First</option>
+  <option value="oldest">Oldest First</option>
+  <option value="az">A → Z</option>
+  <option value="za">Z → A</option>
+</select>
+
+
    <NoteForm
   note={note}
   handleChange={handleChange}
@@ -157,10 +186,9 @@ return (
 
     
 <NoteList
-  filteredNotes={filteredNotes}
+  filteredNotes={displayNotes}
   onEdit={handleEdit}
 />
-    
  </div>
 
    
