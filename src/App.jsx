@@ -29,13 +29,10 @@ function App() {
 
   
 const {
-  notes: contextNotes,
+  notes,
   addNote,
-  deleteNote,
   updateNote
 } = useNotes();
-
-
  
 
 
@@ -73,6 +70,11 @@ if (editingId !== null) {
 
   setEditingId(null);
 
+  setNote({
+  title: "",
+  description: ""
+});
+
   return;
 }
 
@@ -102,19 +104,7 @@ function handleCancelEdit() {
 
 
 
- function handleDelete(id) {
-  const shouldDelete = window.confirm(
-    "Are you sure you want to delete this note?"
-  );
-
-  if (!shouldDelete) {
-    return;
-  }
-
-  deleteNote(id);
-}
-
-
+ 
 
 
 function handleEdit(noteToEdit) {
@@ -150,7 +140,7 @@ return (
 
 
 
-   <p>Total Notes: {contextNotes.length}</p>
+   <p>Total Notes: {notes.length}</p>
 
 
 
