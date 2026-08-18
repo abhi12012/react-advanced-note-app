@@ -1,6 +1,7 @@
 
 
 import useSearch from "./hooks/useSearch";
+import useSort from "./hooks/useSort";
 
 import { useState } from "react";
 
@@ -45,21 +46,8 @@ const searchedNotes = useSearch(notes, searchText);
 
 
 const filteredNotes = useSearch(notes, searchText);
-const displayNotes = [...filteredNotes];
+const sortedNotes = useSort(filteredNotes, sortBy);
 
-if (sortBy === "newest") {
-  displayNotes.sort((a, b) => b.id - a.id);
-}
-
-if (sortBy === "oldest") {
-  displayNotes.sort((a, b) => a.id - b.id);
-}
-
-if (sortBy === "az") {
-  displayNotes.sort((a, b) =>
-    a.title.localeCompare(b.title)
-  );
-}
 
 
 
@@ -186,7 +174,7 @@ return (
 
     
 <NoteList
-  filteredNotes={displayNotes}
+  filteredNotes={sortedNotes}
   onEdit={handleEdit}
 />
  </div>
