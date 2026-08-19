@@ -1,4 +1,6 @@
 function parseCSV(csv) {
+  csv = csv.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+
   let insideQuotes = false;
 
   let currentValue = "";
@@ -17,32 +19,6 @@ function parseCSV(csv) {
     if (char === "," && !insideQuotes) {
       values.push(currentValue);
       currentValue = "";
-      continue;
-    }
-
-    function parseCSV(csv) {
-  let insideQuotes = false;
-
-  let currentValue = "";
-
-  let values = [];
-
-  let rows = [];
-
-  for (let i = 0; i < csv.length; i++) {
-    const char = csv[i];
-
-    if (char === '"') {
-      insideQuotes = !insideQuotes;
-    }
-
-    if (char === "," && !insideQuotes) {
-      values.push(currentValue);
-      currentValue = "";
-      continue;
-    }
-
-    if (char === "\r" && !insideQuotes) {
       continue;
     }
 
@@ -63,17 +39,6 @@ function parseCSV(csv) {
   rows.push(values);
 
   return rows;
-}
-
-export default parseCSV;
-
-    currentValue += char;
-  }
-
-  values.push(currentValue);
-rows.push(values);
-
-return rows;
 }
 
 export default parseCSV;

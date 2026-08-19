@@ -158,6 +158,9 @@ setNote({
 
 
 
+<p>Import CSV:</p>
+
+
 
 <input
   type="file"
@@ -174,6 +177,9 @@ setNote({
 
   const headers = rows[0];
 const values = rows[1];
+console.log("ROWS LENGTH:", rows.length);
+console.log("SECOND ROW:", rows[2]);
+console.log("ROWS:", rows);
 
 const importedNote = csvRowToNote(headers, values);
 
