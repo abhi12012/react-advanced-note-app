@@ -1,4 +1,7 @@
 import downloadCSV from "./utils/downloadCSV";
+import parseCSV from "./utils/parseCSV";
+import csvRowToNote from "./utils/csvRowToNote";
+import normalizeImportedNote from "./utils/normalizeImportedNote";
 
 import useCategoryFilter from "./hooks/useCategoryFilter";
 
@@ -152,6 +155,37 @@ setNote({
         <button onClick={() => downloadCSV(notes)}>
   Export CSV
 </button>
+
+
+
+
+<input
+  type="file"
+  accept=".csv"
+  onChange={(event) => {
+    const file = event.target.files[0];
+
+    const reader = new FileReader();
+
+   reader.onload = (event) => {
+  const csvText = event.target.result;
+
+  const rows = parseCSV(csvText);
+
+  const headers = rows[0];
+const values = rows[1];
+
+const importedNote = csvRowToNote(headers, values);
+
+const normalizedNote = normalizeImportedNote(importedNote);
+
+console.log(normalizedNote);
+};
+
+    reader.readAsText(file);
+  }}
+/>
+
 
 
         <p>Total Notes: {notes.length}</p>
