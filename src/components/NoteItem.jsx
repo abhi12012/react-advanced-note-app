@@ -31,6 +31,7 @@ function handleDelete() {
       <p>Category: {note.category || "General"}</p>
       <p>Priority: {note.priority || "Medium"}</p>
       <p>Created At: {note.createdAt}</p>
+      <p>Updated At: {note.updatedAt}</p>
 
 <button onClick={() => onEdit(note)}>
   Edit

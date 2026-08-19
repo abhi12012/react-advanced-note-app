@@ -113,7 +113,10 @@ function updateNote(id, updatedNote) {
     type: "UPDATE_NOTE",
     payload: {
       id,
-      updatedNote
+      updatedNote: {
+        ...updatedNote,
+        updatedAt: Date.now()
+      }
     }
   });
 }
