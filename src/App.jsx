@@ -70,10 +70,16 @@ const sortedNotes = useSort(categoryNotes, sortBy);
   }
 
   function handleAddNote() {
+    
     if (note.title.trim() === "") {
       setError("Title is required");
       return;
     }
+
+    if (note.title.length > 100) {
+  setError("Title must be 100 characters or less");
+  return;
+}
 
     setError("");
 
