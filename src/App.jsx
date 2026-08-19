@@ -1,10 +1,11 @@
+
 import useCategoryFilter from "./hooks/useCategoryFilter";
 
 import Header from "./components/Header";
 import useSearch from "./hooks/useSearch";
 import useSort from "./hooks/useSort";
 
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 import NoteForm from "./components/NoteForm";
 import NoteList from "./components/NoteList";
@@ -20,9 +21,9 @@ function App() {
   title: "",
   description: "",
   category: "General",
-  isPinned: false
+  isPinned: false,
+  priority: "Medium"
 });
-
 
 
   const [editingId, setEditingId] = useState(null);
@@ -111,10 +112,12 @@ const sortedNotes = useSort(categoryNotes, sortBy);
     setEditingId(null);
 
     setNote({
-      title: "",
-      description: "",
-      category: "General"
-    });
+  title: "",
+  description: "",
+  category: "General",
+  isPinned: false,
+  priority: "Medium"
+});
 
     setError("");
   }

@@ -43,6 +43,22 @@ function NoteForm({
   <option value="Important">Important</option>
 </select>
 
+
+
+
+<select
+  name="priority"
+  value={note.priority}
+  onChange={handleChange}
+>
+  <option value="High">High</option>
+  <option value="Medium">Medium</option>
+  <option value="Low">Low</option>
+</select>
+
+
+
+
       <button onClick={handleAddNote}>
 
         {editingId !== null ? "Update Note" : "Add Note"}
