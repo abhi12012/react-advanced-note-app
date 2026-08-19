@@ -31,8 +31,11 @@ function handleDelete() {
       <p>Category: {note.category || "General"}</p>
       <p>Priority: {note.priority || "Medium"}</p>
 
-      <p>
-  Created At: {new Date(note.createdAt).toLocaleString()}
+     <p>
+  Created At:{" "}
+  {note.createdAt
+    ? new Date(note.createdAt).toLocaleString()
+    : "Not available"}
 </p>
 
       <p>
