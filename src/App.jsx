@@ -1,3 +1,4 @@
+import downloadCSV from "./utils/downloadCSV";
 
 import useCategoryFilter from "./hooks/useCategoryFilter";
 
@@ -90,12 +91,13 @@ const sortedNotes = useSort(categoryNotes, sortBy);
       });
 
       setEditingId(null);
-
-      setNote({
-        title: "",
-        description: "",
-        category: "General"
-      });
+setNote({
+  title: "",
+  description: "",
+  category: "General",
+  isPinned: false,
+  priority: "Medium"
+});
 
       return;
     }
@@ -145,8 +147,20 @@ const sortedNotes = useSort(categoryNotes, sortBy);
         title="Advanced Notes App"
         subtitle="Manage your notes"
       >
+
+
+        <button onClick={() => downloadCSV(notes)}>
+  Export CSV
+</button>
+
+
         <p>Total Notes: {notes.length}</p>
       </Header>
+
+
+      
+
+  
 
       <input
         type="text"
