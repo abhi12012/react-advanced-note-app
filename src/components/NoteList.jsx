@@ -22,9 +22,18 @@ function NoteList({ filteredNotes, onEdit }) {
       <h2>Note List</h2>
 
      {notes.length === 0 ? (
-  <p>No notes available.</p>
+  <div>
+  <p>No notes yet</p>
+  <p>Create your first note to get started.</p>
+</div>
+
 ) : filteredNotes.length === 0 ? (
-  <p>No notes found.</p>
+
+  <div>
+  <p>No matching notes</p>
+  <p>Try a different search or filter.</p>
+</div>
+
 ) : (
   filteredNotes.map((note) => (
     <NoteItem
