@@ -7,7 +7,8 @@ function NoteForm({
   handleChange,
   handleAddNote,
   editingId,
-  handleCancelEdit
+  handleCancelEdit,
+  error
 }) {
 
 
@@ -23,6 +24,9 @@ function NoteForm({
         value={note.title}
         onChange={handleChange}
       />
+      {error && <p>{error}</p>}
+
+
 
       <textarea
         name="description"

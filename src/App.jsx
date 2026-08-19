@@ -181,7 +181,7 @@ const sortedNotes = useSort(categoryNotes, sortBy);
         <option value="za">Z → A</option>
       </select>
 
-      {error && <p>{error}</p>}
+     
 
       <NoteForm
         note={note}
@@ -189,6 +189,7 @@ const sortedNotes = useSort(categoryNotes, sortBy);
         handleAddNote={handleAddNote}
         editingId={editingId}
         handleCancelEdit={handleCancelEdit}
+        error={error}
       />
 
       <NoteList
