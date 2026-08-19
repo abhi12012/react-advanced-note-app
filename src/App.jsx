@@ -96,7 +96,8 @@ const sortedNotes = useSort(categoryNotes, sortBy);
 
     const newNote = {
       ...note,
-      id: Date.now()
+      id: Date.now(),
+      createdAt: Date.now()
     };
 
     addNote(newNote);
