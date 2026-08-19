@@ -176,16 +176,27 @@ setNote({
   const rows = parseCSV(csvText);
 
   const headers = rows[0];
-const values = rows[1];
+const values = rows.slice(1);
 console.log("ROWS LENGTH:", rows.length);
 console.log("SECOND ROW:", rows[2]);
 console.log("ROWS:", rows);
 
-const importedNote = csvRowToNote(headers, values);
+const importedNotes = values.map((row) => {
+  const importedNote = csvRowToNote(headers, row);
 
-const normalizedNote = normalizeImportedNote(importedNote);
+  return normalizeImportedNote(importedNote);
+});
 
-console.log(normalizedNote);
+console.log(importedNotes);
+importedNotes.forEach((note) => {
+  const alreadyExists = notes.some(
+    (existingNote) => existingNote.id === note.id
+  );
+
+  if (!alreadyExists) {
+    addNote(note);
+  }
+});
 };
 
     reader.readAsText(file);
