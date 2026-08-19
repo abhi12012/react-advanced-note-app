@@ -49,7 +49,10 @@ const categoryNotes = useCategoryFilter(
 const sortedNotes = useSort(categoryNotes, sortBy);
 
 
-  
+  const pinnedNotes = [
+  ...sortedNotes.filter((note) => note.isPinned),
+  ...sortedNotes.filter((note) => !note.isPinned)
+];
 
 
 
@@ -178,9 +181,9 @@ const sortedNotes = useSort(categoryNotes, sortBy);
       />
 
       <NoteList
-        filteredNotes={sortedNotes}
-        onEdit={handleEdit}
-      />
+  filteredNotes={pinnedNotes}
+  onEdit={handleEdit}
+/>
     </div>
   );
 }
