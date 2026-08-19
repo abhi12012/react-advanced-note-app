@@ -12,11 +12,18 @@ import NoteList from "./components/NoteList";
 import useNotes from "./hooks/useNotes";
 
 function App() {
+
+
+
+
   const [note, setNote] = useState({
-    title: "",
-    description: "",
-    category: "General"
-  });
+  title: "",
+  description: "",
+  category: "General",
+  isPinned: false
+});
+
+
 
   const [editingId, setEditingId] = useState(null);
 

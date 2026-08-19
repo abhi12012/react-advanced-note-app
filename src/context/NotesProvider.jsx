@@ -39,12 +39,26 @@ function notesReducer(state, action) {
     (note) => note.id !== action.payload
   );
 
+
+  case "TOGGLE_PIN":
+  return state.map((note) =>
+    note.id === action.payload
+      ? {
+          ...note,
+          isPinned: !note.isPinned
+        }
+      : note
+  );
+
+
   case "UPDATE_NOTE":
   return state.map((note) =>
     note.id === action.payload.id
       ? action.payload.updatedNote
       : note
   );
+
+
 
     default:
       return state;
@@ -104,7 +118,12 @@ function updateNote(id, updatedNote) {
   });
 }
 
-
+function togglePin(id) {
+  dispatch({
+    type: "TOGGLE_PIN",
+    payload: id
+  });
+}
 
 
   return (
@@ -114,7 +133,7 @@ function updateNote(id, updatedNote) {
     
     addNote,
     deleteNote,
-    
+    togglePin,
     updateNote             
   }}
 >

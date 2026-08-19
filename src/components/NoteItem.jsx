@@ -8,10 +8,7 @@ function NoteItem({
 }) {
 
   
-const {
-  deleteNote
-} = useNotes();
-
+const { deleteNote, togglePin } = useNotes();
 
 
 function handleDelete() {
@@ -39,6 +36,11 @@ function handleDelete() {
 
     <button onClick={handleDelete}>
   Delete
+</button>
+
+
+<button onClick={() => togglePin(note.id)}>
+  {note.isPinned ? "Unpin" : "Pin"}
 </button>
 
     </div>
