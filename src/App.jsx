@@ -183,7 +183,27 @@ const rows = parseCSV(csvText);
   if (rows.length === 0) return;
 
   const headers = rows[0];
+
+  const requiredHeaders = [
+  "ID",
+  "Title",
+  "Description",
+  "Category",
+  "Priority",
+  "IsPinned",
+  "CreatedAt",
+  "UpdatedAt"
+];
+
+const hasAllHeaders = requiredHeaders.every((header) =>
+  headers.includes(header)
+);
+
+if (!hasAllHeaders) return;
+
+
 const values = rows.slice(1);
+
 console.log("ROWS LENGTH:", rows.length);
 console.log("SECOND ROW:", rows[2]);
 console.log("ROWS:", rows);
