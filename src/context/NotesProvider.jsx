@@ -88,7 +88,7 @@ function addNote(note) {
     type: "ADD_NOTE",
   payload: {
   ...note,
-  id: Date.now()
+ id: note.id || Date.now()
 }
   });
 }

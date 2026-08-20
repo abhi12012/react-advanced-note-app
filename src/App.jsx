@@ -1,3 +1,5 @@
+import { downloadJSON } from "./utils/downloadJSON";
+
 import downloadCSV from "./utils/downloadCSV";
 import parseCSV from "./utils/parseCSV";
 import csvRowToNote from "./utils/csvRowToNote";
@@ -144,6 +146,11 @@ setNote({
     });
   }, []);
 
+
+  const handleBackup = () => {
+  downloadJSON(notes);
+};
+
   return (
     <div>
       <Header
@@ -155,6 +162,45 @@ setNote({
         <button onClick={() => downloadCSV(notes)}>
   Export CSV
 </button>
+
+
+<button onClick={handleBackup}>
+  Backup Notes
+</button>
+
+
+
+<p>Restore Backup:</p>
+
+<input
+  type="file"
+  accept=".json"
+  onChange={(event) => {
+    const file = event.target.files[0];
+
+    const reader = new FileReader();
+
+
+    reader.onload = (event) => {
+  const jsonText = event.target.result;
+
+  const importedNotes = JSON.parse(jsonText);
+
+  importedNotes.forEach((note) => {
+  const alreadyExists = notes.some(
+    (existingNote) => existingNote.id === note.id
+  );
+
+  if (!alreadyExists) {
+    addNote(note);
+  }
+});
+};
+reader.readAsText(file);
+  }}
+
+  
+/>
 
 
 
