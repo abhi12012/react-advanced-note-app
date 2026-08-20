@@ -174,6 +174,8 @@ setNote({
   const csvText = event.target.result;
 
   const rows = parseCSV(csvText);
+  
+  if (rows.length === 0) return;
 
   const headers = rows[0];
 const values = rows.slice(1);
