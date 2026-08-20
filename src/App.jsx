@@ -1,4 +1,5 @@
 import { downloadJSON } from "./utils/downloadJSON";
+import { readJSON } from "./utils/readJSON";
 
 import downloadCSV from "./utils/downloadCSV";
 import parseCSV from "./utils/parseCSV";
@@ -173,6 +174,34 @@ setNote({
 </button>
 
 
+<p>Import JSON:</p>
+
+<input
+  type="file"
+  accept=".json"
+ onChange={(event) => {
+  const file = event.target.files[0];
+
+  readJSON(file, (importedNotes) => {
+
+    
+
+    importedNotes.forEach((note) => {
+      if (!note) return;
+
+      const alreadyExists = notes.some(
+        (existingNote) => existingNote.id === note.id
+      );
+
+      if (!alreadyExists) {
+        addNote(note);
+      }
+    });
+
+  });
+}}
+/>
+
 <p>Restore Backup:</p>
 
 <input
@@ -188,6 +217,8 @@ setNote({
   const jsonText = event.target.result;
 
   const importedNotes = JSON.parse(jsonText);
+
+  
 
   importedNotes.forEach((note) => {
   const alreadyExists = notes.some(
