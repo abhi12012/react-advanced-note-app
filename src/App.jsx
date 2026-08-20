@@ -50,6 +50,8 @@ function App() {
 
   const [sortBy, setSortBy] = useState("newest");
 
+  const [secondarySortBy, setSecondarySortBy] = useState("none");
+
   const [categoryFilter, setCategoryFilter] = useState("all");
 
   const [error, setError] = useState("");
@@ -77,8 +79,11 @@ const pinNotes = usePinFilter(
   pinFilter
 );
 
-const sortedNotes = useSort(pinNotes, sortBy);
-
+const sortedNotes = useSort(
+  pinNotes,
+  sortBy,
+  secondarySortBy
+);
 
 
 
@@ -410,6 +415,7 @@ importedNotes.forEach((note) => {
         value={sortBy}
         onChange={(event) => setSortBy(event.target.value)}
       >
+        <option value="priority">Priority</option>
         <option value="newest">Newest First</option>
         <option value="oldest">Oldest First</option>
         <option value="az">A → Z</option>
@@ -417,6 +423,18 @@ importedNotes.forEach((note) => {
       </select>
 
      
+
+       <select
+  value={secondarySortBy}
+  onChange={(event) => setSecondarySortBy(event.target.value)}
+>
+  <option value="none">No Secondary Sort</option>
+  <option value="newest">Then Newest First</option>
+  <option value="oldest">Then Oldest First</option>
+  <option value="az">Then A → Z</option>
+  <option value="za">Then Z → A</option>
+</select>
+
 
       <NoteForm
         note={note}
