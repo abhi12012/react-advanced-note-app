@@ -171,10 +171,15 @@ setNote({
     const reader = new FileReader();
 
    reader.onload = (event) => {
+
+
   const csvText = event.target.result;
 
-  const rows = parseCSV(csvText);
-  
+if (!csvText.trim()) return;
+
+const rows = parseCSV(csvText);
+
+
   if (rows.length === 0) return;
 
   const headers = rows[0];
