@@ -204,25 +204,31 @@ if (!hasAllHeaders) return;
 
 const values = rows.slice(1);
 
-console.log("ROWS LENGTH:", rows.length);
-console.log("SECOND ROW:", rows[2]);
-console.log("ROWS:", rows);
+
 
 const importedNotes = values.map((row) => {
   const importedNote = csvRowToNote(headers, row);
 
+  if (!importedNote.id) {
+  return null;
+}
+
   if (!importedNote.title || importedNote.title.trim() === "") {
+  return null;
+}
+
+if (!importedNote.createdAt || !importedNote.updatedAt) {
   return null;
 }
 
   return normalizeImportedNote(importedNote);
 });
 
-console.log(importedNotes);
+
 importedNotes.forEach((note) => {
   if (!note) return;
 
-  
+
   const alreadyExists = notes.some(
     (existingNote) => existingNote.id === note.id
   );
