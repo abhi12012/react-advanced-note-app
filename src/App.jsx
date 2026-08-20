@@ -1,3 +1,5 @@
+
+import usePinFilter from "./hooks/usePinFilter";
 import usePriorityFilter from "./hooks/usePriorityFilter";
 import { downloadJSON } from "./utils/downloadJSON";
 import { readJSON } from "./utils/readJSON";
@@ -40,6 +42,10 @@ function App() {
 
   const [priorityFilter, setPriorityFilter] = useState("all");
 
+  const [pinFilter, setPinFilter] = useState("all");
+
+
+
   
 
   const [sortBy, setSortBy] = useState("newest");
@@ -66,9 +72,12 @@ const priorityNotes = usePriorityFilter(
   priorityFilter
 );
 
+const pinNotes = usePinFilter(
+  priorityNotes,
+  pinFilter
+);
 
-
-const sortedNotes = useSort(priorityNotes, sortBy);
+const sortedNotes = useSort(pinNotes, sortBy);
 
 
 
@@ -381,6 +390,17 @@ importedNotes.forEach((note) => {
   <option value="High">High</option>
   <option value="Medium">Medium</option>
   <option value="Low">Low</option>
+</select>
+
+
+
+<select
+  value={pinFilter}
+  onChange={(event) => setPinFilter(event.target.value)}
+>
+  <option value="all">All Notes</option>
+  <option value="pinned">Pinned</option>
+  <option value="unpinned">Unpinned</option>
 </select>
 
 
