@@ -7,7 +7,7 @@ import { memo } from "react";
 
 
 
-function NoteList({ filteredNotes, onEdit }) {
+function NoteList({ filteredNotes, onEdit, searchText }) {
 
  const {
   notes
@@ -40,6 +40,8 @@ function NoteList({ filteredNotes, onEdit }) {
       key={note.id}
       note={note}
       onEdit={onEdit}
+      searchText={searchText}
+      
     />
   ))
 )}

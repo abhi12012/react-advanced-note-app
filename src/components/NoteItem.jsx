@@ -1,12 +1,14 @@
 import useNotes from "../hooks/useNotes";
 
+import HighlightText from "./HighlightText";
+
 
 
 function NoteItem({
   note,
-  onEdit
+  onEdit,
+  searchText
 }) {
-
   
 const { deleteNote, togglePin } = useNotes();
 
@@ -25,9 +27,24 @@ function handleDelete() {
 
   return (
     <div>
-      <h3>{note.title}</h3>
 
-      <p>{note.description || "No description"}</p>
+      <h3>
+  <HighlightText
+    text={note.title}
+    searchText={searchText}
+  />
+
+</h3>
+
+      <p>
+
+  <HighlightText
+    text={note.description || "No description"}
+    searchText={searchText}
+  />
+  
+</p>
+
       <p>Category: {note.category || "General"}</p>
       <p>Priority: {note.priority || "Medium"}</p>
 

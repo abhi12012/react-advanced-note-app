@@ -382,6 +382,7 @@ importedNotes.forEach((note) => {
       <NoteList
   filteredNotes={pinnedNotes}
   onEdit={handleEdit}
+  searchText={searchText}
 />
     </div>
   );
