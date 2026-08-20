@@ -1,4 +1,4 @@
-export function downloadJSON(data) {
+export function downloadJSON(data, filename = "notes-backup.json") {
   const jsonData = JSON.stringify(data, null, 2);
 
   const blob = new Blob([jsonData], { type: "application/json" });
@@ -8,7 +8,7 @@ export function downloadJSON(data) {
   const link = document.createElement("a");
 
   link.href = url;
-  link.download = "notes-backup.json";
+  link.download = filename;
 
   link.click();
 
