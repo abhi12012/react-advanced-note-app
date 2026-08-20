@@ -45,6 +45,8 @@ function App() {
 
   const { notes, addNote, updateNote } = useNotes();
 
+  
+
 
 
  const filteredNotes = useSearch(notes, searchText);
