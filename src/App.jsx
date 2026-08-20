@@ -168,6 +168,10 @@ setNote({
   Backup Notes
 </button>
 
+<button onClick={() => downloadJSON(notes)}>
+  Export JSON
+</button>
+
 
 
 <p>Restore Backup:</p>
