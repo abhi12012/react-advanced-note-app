@@ -1,3 +1,4 @@
+import usePriorityFilter from "./hooks/usePriorityFilter";
 import { downloadJSON } from "./utils/downloadJSON";
 import { readJSON } from "./utils/readJSON";
 
@@ -37,6 +38,10 @@ function App() {
 
   const [searchText, setSearchText] = useState("");
 
+  const [priorityFilter, setPriorityFilter] = useState("all");
+
+  
+
   const [sortBy, setSortBy] = useState("newest");
 
   const [categoryFilter, setCategoryFilter] = useState("all");
@@ -56,7 +61,17 @@ const categoryNotes = useCategoryFilter(
   categoryFilter
 );
 
-const sortedNotes = useSort(categoryNotes, sortBy);
+const priorityNotes = usePriorityFilter(
+  categoryNotes,
+  priorityFilter
+);
+
+
+
+const sortedNotes = useSort(priorityNotes, sortBy);
+
+
+
 
 
   const pinnedNotes = [
@@ -355,6 +370,19 @@ importedNotes.forEach((note) => {
   <option value="Learning">Learning</option>
   <option value="Important">Important</option>
 </select>
+
+
+
+<select
+  value={priorityFilter}
+  onChange={(event) => setPriorityFilter(event.target.value)}
+>
+  <option value="all">All Priorities</option>
+  <option value="High">High</option>
+  <option value="Medium">Medium</option>
+  <option value="Low">Low</option>
+</select>
+
 
 
 
