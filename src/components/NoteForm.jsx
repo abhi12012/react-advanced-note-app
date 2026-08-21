@@ -30,6 +30,10 @@ if (event.key === "Escape") {
 >
       <h2>Note Form</h2>
 
+      <label htmlFor="note-title">
+  Title
+</label>
+
       <input
         name="title"
         type="text"
