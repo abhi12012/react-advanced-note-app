@@ -32,6 +32,7 @@ import useNotes from "./hooks/useNotes";
 
 function App() {
 
+  
 const [darkMode, setDarkMode] = useState(false);
 
 useEffect(() => {
@@ -81,6 +82,8 @@ useEffect(() => {
 
 
  const filteredNotes = useSearch(notes, searchText);
+
+ 
 
 const categoryNotes = useCategoryFilter(
   filteredNotes,

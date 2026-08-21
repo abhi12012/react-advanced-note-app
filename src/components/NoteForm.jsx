@@ -35,6 +35,7 @@ if (event.key === "Escape") {
 </label>
 
       <input
+        id="note-title"
         name="title"
         type="text"
         placeholder="Enter note title"
@@ -45,9 +46,11 @@ if (event.key === "Escape") {
       />
 
       {error && (
-  <p id="title-error">
-    {error}
-  </p>
+        
+ <p id="title-error" role="alert">
+  {error}
+</p>
+
 )}
 
 
@@ -56,6 +59,7 @@ if (event.key === "Escape") {
 </label>
 
       <textarea
+        id="note-description"
         name="description"
         placeholder="Enter note description"
         value={note.description}
@@ -70,6 +74,7 @@ if (event.key === "Escape") {
 </label>
 
       <select
+      id="note-category"
   name="category"
   value={note.category}
   onChange={handleChange}
@@ -90,6 +95,7 @@ if (event.key === "Escape") {
 </label>
 
 <select
+id="note-priority"
   name="priority"
   value={note.priority}
   onChange={handleChange}
