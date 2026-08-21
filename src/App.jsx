@@ -60,7 +60,7 @@ function App() {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const notesPerPage = 5;
+  const [notesPerPage, setNotesPerPage] = useState(5);
 
   
 
@@ -454,6 +454,22 @@ importedNotes.forEach((note) => {
   <option value="za">Z → A</option>
 </select>
      
+
+
+<select
+  value={notesPerPage}
+  onChange={(event) => {
+    setNotesPerPage(Number(event.target.value));
+    setCurrentPage(1);
+  }}
+>
+  <option value={5}>5 Notes</option>
+  <option value={10}>10 Notes</option>
+  <option value={20}>20 Notes</option>
+</select>
+
+
+
 
       <NoteForm
         note={note}
