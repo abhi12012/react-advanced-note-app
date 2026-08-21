@@ -10,9 +10,10 @@ import { memo } from "react";
 function NoteList({ filteredNotes, onEdit, searchText }) {
 
  const {
-  notes
+  notes,
+  deletedNote,
+  undoDelete
 } = useNotes();
-
 
 
   
@@ -20,6 +21,16 @@ function NoteList({ filteredNotes, onEdit, searchText }) {
   return (
     <div>
       <h2>Note List</h2>
+
+      {deletedNote && (
+  <div>
+    <p>Note deleted.</p>
+
+    <button onClick={undoDelete}>
+      Undo
+    </button>
+  </div>
+)}
 
      {notes.length === 0 ? (
   <div>

@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useState } from "react";
 import NotesContext from "./NotesContext";
 
 
@@ -74,6 +74,8 @@ function NotesProvider({ children }) {
   getInitialNotes()
 );
 
+const [deletedNote, setDeletedNote] = useState(null);
+
 
 
 useEffect(() => {
@@ -100,10 +102,31 @@ function addNote(note) {
 
 
 function deleteNote(id) {
+  const noteToDelete = notes.find(
+    (note) => note.id === id
+  );
+
+  setDeletedNote(noteToDelete);
+
   dispatch({
     type: "DELETE_NOTE",
     payload: id
   });
+}
+
+
+
+function undoDelete() {
+  if (!deletedNote) {
+    return;
+  }
+
+  dispatch({
+    type: "ADD_NOTE",
+    payload: deletedNote
+  });
+
+  setDeletedNote(null);
 }
 
 
@@ -132,13 +155,14 @@ function togglePin(id) {
   return (
     <NotesContext.Provider
   value={{
-    notes,
-    
-    addNote,
-    deleteNote,
-    togglePin,
-    updateNote             
-  }}
+  notes,
+  deletedNote,
+  addNote,
+  deleteNote,
+  undoDelete,
+  togglePin,
+  updateNote
+}}
 >
       {children}
     </NotesContext.Provider>
