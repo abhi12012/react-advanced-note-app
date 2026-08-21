@@ -58,6 +58,10 @@ function App() {
 
   const { notes, addNote, updateNote } = useNotes();
 
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const notesPerPage = 5;
+
   
 
 
@@ -81,6 +85,24 @@ const pinNotes = usePinFilter(
 
 const sortedNotes = useSort(pinNotes, sortBy);
 
+
+
+
+
+
+const startIndex = (currentPage - 1) * notesPerPage;
+
+const endIndex = startIndex + notesPerPage;
+
+const paginatedNotes = sortedNotes.slice(
+  startIndex,
+  endIndex
+);
+
+
+const totalPages = Math.ceil(
+  sortedNotes.length / notesPerPage
+);
 
 
 
@@ -441,10 +463,31 @@ importedNotes.forEach((note) => {
       />
 
       <NoteList
- filteredNotes={sortedNotes}
+  filteredNotes={paginatedNotes}
   onEdit={handleEdit}
   searchText={searchText}
 />
+
+
+
+<button
+  onClick={() => setCurrentPage(currentPage - 1)}
+  disabled={currentPage === 1}
+>
+  Previous
+</button>
+
+
+
+
+<button
+  onClick={() => setCurrentPage(currentPage + 1)}
+  disabled={currentPage === totalPages}
+>
+  Next
+</button>
+
+
     </div>
   );
 }
