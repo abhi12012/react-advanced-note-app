@@ -12,13 +12,18 @@ function NoteForm({
 }) {
 
 
-
+console.log("editingId:", editingId);
   return (
     <div
 
   onKeyDown={(event) => {
   if (event.ctrlKey && event.key === "Enter") {
   handleAddNote();
+}
+
+if (event.key === "Escape") {
+  console.log("Escape pressed");
+  handleCancelEdit();
 }
 }}
 
