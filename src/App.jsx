@@ -481,6 +481,11 @@ importedNotes.forEach((note) => {
 
 
 
+<span>
+  Page {currentPage} of {totalPages}
+</span>
+
+
 
 <button
   onClick={() => setCurrentPage(currentPage + 1)}
