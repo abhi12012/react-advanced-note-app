@@ -38,12 +38,22 @@ if (event.key === "Escape") {
         name="title"
         type="text"
         placeholder="Enter note title"
+        aria-describedby="title-error"
+        aria-invalid={!!error}
         value={note.title}
         onChange={handleChange}
       />
-      {error && <p>{error}</p>}
+
+      {error && (
+  <p id="title-error">
+    {error}
+  </p>
+)}
 
 
+      <label htmlFor="note-description">
+  Description
+</label>
 
       <textarea
         name="description"
@@ -51,6 +61,13 @@ if (event.key === "Escape") {
         value={note.description}
         onChange={handleChange}
       />
+
+
+   
+
+   <label htmlFor="note-category">
+  Category
+</label>
 
       <select
   name="category"
@@ -66,6 +83,11 @@ if (event.key === "Escape") {
 
 
 
+
+
+<label htmlFor="note-priority">
+  Priority
+</label>
 
 <select
   name="priority"
