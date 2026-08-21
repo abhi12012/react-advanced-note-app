@@ -79,11 +79,8 @@ const pinNotes = usePinFilter(
   pinFilter
 );
 
-const sortedNotes = useSort(
-  pinNotes,
-  sortBy,
-  secondarySortBy
-);
+const sortedNotes = useSort(pinNotes, sortBy);
+
 
 
 
@@ -412,29 +409,27 @@ importedNotes.forEach((note) => {
 
 
       <select
-        value={sortBy}
-        onChange={(event) => setSortBy(event.target.value)}
-      >
-        <option value="priority">Priority</option>
-        <option value="newest">Newest First</option>
-        <option value="oldest">Oldest First</option>
-        <option value="az">A → Z</option>
-        <option value="za">Z → A</option>
-      </select>
-
-     
-
-       <select
-  value={secondarySortBy}
-  onChange={(event) => setSecondarySortBy(event.target.value)}
+  value={sortBy}
+  onChange={(event) => setSortBy(event.target.value)}
 >
-  <option value="none">No Secondary Sort</option>
-  <option value="newest">Then Newest First</option>
-  <option value="oldest">Then Oldest First</option>
-  <option value="az">Then A → Z</option>
-  <option value="za">Then Z → A</option>
-</select>
+  <option value="priority">Priority</option>
 
+  <option value="priority-newest">
+  Priority → Newest
+</option>
+
+  <option value="priority-oldest">
+  Priority → Oldest
+</option>
+
+  
+
+  <option value="newest">Newest First</option>
+  <option value="oldest">Oldest First</option>
+  <option value="az">A → Z</option>
+  <option value="za">Z → A</option>
+</select>
+     
 
       <NoteForm
         note={note}
@@ -446,7 +441,7 @@ importedNotes.forEach((note) => {
       />
 
       <NoteList
-  filteredNotes={pinnedNotes}
+ filteredNotes={sortedNotes}
   onEdit={handleEdit}
   searchText={searchText}
 />

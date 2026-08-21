@@ -1,55 +1,75 @@
-function useSort(filteredNotes, sortBy, secondarySortBy) {
+function useSort(filteredNotes, sortBy) {
 
   const sortedNotes = [...filteredNotes];
+if (sortBy === "priority") {
 
-  function comparePriority(a, b) {
+  const priorityOrder = {
+    High: 1,
+    Medium: 2,
+    Low: 3
+  };
 
-    const priorityOrder = {
-      High: 1,
-      Medium: 2,
-      Low: 3
-    };
+  sortedNotes.sort((a, b) => {
 
-    return priorityOrder[a.priority] - priorityOrder[b.priority];
-  }
+    const priorityDifference =
+      priorityOrder[a.priority] -
+      priorityOrder[b.priority];
 
-  function compareSecondary(a, b) {
-
-    if (secondarySortBy === "newest") {
-      return b.id - a.id;
+    if (priorityDifference !== 0) {
+      return priorityDifference;
     }
 
-    if (secondarySortBy === "oldest") {
-      return a.id - b.id;
+    return a.id - b.id;
+  });
+}
+
+
+if (sortBy === "priority-newest") {
+
+  const priorityOrder = {
+    High: 1,
+    Medium: 2,
+    Low: 3
+  };
+
+  sortedNotes.sort((a, b) => {
+
+    const priorityDifference =
+      priorityOrder[a.priority] -
+      priorityOrder[b.priority];
+
+    if (priorityDifference !== 0) {
+      return priorityDifference;
     }
 
-    if (secondarySortBy === "az") {
-      return a.title.localeCompare(b.title);
+    return b.id - a.id;
+  });
+}
+
+
+
+if (sortBy === "priority-oldest") {
+
+  const priorityOrder = {
+    High: 1,
+    Medium: 2,
+    Low: 3
+  };
+
+  sortedNotes.sort((a, b) => {
+
+    const priorityDifference =
+      priorityOrder[a.priority] -
+      priorityOrder[b.priority];
+
+    if (priorityDifference !== 0) {
+      return priorityDifference;
     }
 
-    if (secondarySortBy === "za") {
-      return b.title.localeCompare(a.title);
-    }
+    return a.id - b.id;
+  });
+}
 
-    return 0;
-  }
-
-  if (sortBy === "priority") {
-
-    sortedNotes.sort((a, b) => {
-
-      const priorityResult = comparePriority(a, b);
-
-      if (priorityResult !== 0) {
-        return priorityResult;
-      }
-
-      return compareSecondary(a, b);
-
-    });
-
-    return sortedNotes;
-  }
 
   if (sortBy === "newest") {
     sortedNotes.sort((a, b) => b.id - a.id);
