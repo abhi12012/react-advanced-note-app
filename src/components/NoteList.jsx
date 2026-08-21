@@ -9,6 +9,8 @@ import { memo } from "react";
 
 function NoteList({ filteredNotes, onEdit, searchText }) {
 
+  
+
  const {
   notes,
   deletedNote,

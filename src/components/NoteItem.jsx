@@ -1,6 +1,10 @@
+
+
 import useNotes from "../hooks/useNotes";
 
 import HighlightText from "./HighlightText";
+
+import { memo } from "react";
 
 
 
@@ -9,6 +13,9 @@ function NoteItem({
   onEdit,
   searchText
 }) {
+  console.log("NoteItem rendered:", note.id);
+
+  
   
 const { deleteNote, togglePin } = useNotes();
 
@@ -76,4 +83,4 @@ function handleDelete() {
   );
 }
 
-export default NoteItem;
+export default memo(NoteItem);
