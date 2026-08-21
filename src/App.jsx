@@ -15,7 +15,7 @@ import Header from "./components/Header";
 import useSearch from "./hooks/useSearch";
 import useSort from "./hooks/useSort";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import NoteForm from "./components/NoteForm";
 import NoteList from "./components/NoteList";
@@ -104,7 +104,9 @@ const totalPages = Math.ceil(
   sortedNotes.length / notesPerPage
 );
 
-
+useEffect(() => {
+  setCurrentPage(1);
+}, [sortedNotes.length]);
 
 
   const pinnedNotes = [
