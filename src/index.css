@@ -30,6 +30,22 @@
   }
 }
 
+
+
+.dark {
+  --text: #9ca3af;
+  --text-h: #f3f4f6;
+  --bg: #16171d;
+  --border: #2e303a;
+  --code-bg: #1f2028;
+  --accent: #c084fc;
+  --accent-bg: rgba(192, 132, 252, 0.15);
+  --accent-border: rgba(192, 132, 252, 0.5);
+  --social-bg: rgba(47, 48, 58, 0.5);
+}
+
+
+
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #9ca3af;
@@ -52,6 +68,9 @@
 
 body {
   margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  transition: background-color 0.3s, color 0.3s;
 }
 
 #root {
@@ -108,4 +127,13 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+
+input,
+textarea,
+select {
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
 }

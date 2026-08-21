@@ -17,14 +17,28 @@ import useSort from "./hooks/useSort";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 
+
+
 import NoteForm from "./components/NoteForm";
 import NoteList from "./components/NoteList";
 
 import useNotes from "./hooks/useNotes";
 
+
+
+
+
+
+
 function App() {
 
+const [darkMode, setDarkMode] = useState(false);
 
+useEffect(() => {
+
+
+  document.documentElement.classList.toggle("dark", darkMode);
+}, [darkMode]);
 
 
   const [note, setNote] = useState({
@@ -469,6 +483,11 @@ importedNotes.forEach((note) => {
   <option value={20}>20 Notes</option>
 </select>
 
+
+
+<button onClick={() => setDarkMode(!darkMode)}>
+  {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
+</button>
 
 
 
