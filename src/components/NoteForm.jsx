@@ -12,7 +12,7 @@ function NoteForm({
 }) {
 
 
-console.log("editingId:", editingId);
+
   return (
     <div
 
@@ -22,7 +22,7 @@ console.log("editingId:", editingId);
 }
 
 if (event.key === "Escape") {
-  console.log("Escape pressed");
+  
   handleCancelEdit();
 }
 }}

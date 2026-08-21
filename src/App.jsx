@@ -177,7 +177,7 @@ setNote({
   }
 
   function handleCancelEdit() {
-     console.log("handleCancelEdit called");
+     
     setEditingId(null);
 
     setNote({
