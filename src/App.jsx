@@ -1,4 +1,6 @@
 
+import ErrorBoundary from "./components/ErrorBoundary";
+
 import usePinFilter from "./hooks/usePinFilter";
 import usePriorityFilter from "./hooks/usePriorityFilter";
 import { downloadJSON } from "./utils/downloadJSON";
