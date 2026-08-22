@@ -206,7 +206,7 @@ setNote(initialNote);
 };
 
   return (
-    <div>
+    <div className="app-container">
       <Header
         title="Advanced Notes App"
         subtitle="Manage your notes"
