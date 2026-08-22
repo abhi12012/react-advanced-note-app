@@ -22,7 +22,7 @@ function NoteList({ filteredNotes, onEdit, searchText }) {
   
   return (
     <div>
-      <h2>Note List</h2>
+     <h2 className="note-list-title">Note List</h2>
 
       {deletedNote && (
   <div>
@@ -42,7 +42,8 @@ function NoteList({ filteredNotes, onEdit, searchText }) {
 
 ) : filteredNotes.length === 0 ? (
 
-  <div>
+
+ <div className="empty-state">
   <p>No matching notes</p>
   <p>Try a different search or filter.</p>
 </div>

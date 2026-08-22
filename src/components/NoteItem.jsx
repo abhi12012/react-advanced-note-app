@@ -30,25 +30,27 @@ function handleDelete() {
   }
 
   deleteNote(note.id);
-}
+} 
 
   return (
-    <div>
+  <div className="note-card">
 
-      <h3>
+     <h3 className="note-title">
   <HighlightText
     text={note.title}
     searchText={searchText}
   />
-
 </h3>
 
-      <p>
 
+
+      <p className="note-description">
   <HighlightText
     text={note.description || "No description"}
     searchText={searchText}
   />
+
+
   
 </p>
 

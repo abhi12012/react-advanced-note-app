@@ -104,6 +104,46 @@ textarea.form-input {
 
 
 
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+
+
+.note-card {
+  padding: 20px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--accent-bg);
+}
+
+
+
+.note-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+
+.note-list-title {
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+
+
+.note-description {
+  margin: 0 0 12px;
+  line-height: 1.6;
+}
+
+
+
 button {
   padding: 8px 14px;
   border: 1px solid var(--border);
@@ -126,4 +166,28 @@ button:focus-visible {
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+
+
+.pagination-info {
+  margin: 0 12px;
+  font-size: 14px;
+  color: var(--text-h);
+}
+
+
+
+.empty-state {
+  padding: 24px;
+  margin: 16px 0;
+  text-align: center;
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  color: var(--text-h);
+  background: var(--accent-bg);
+}
+
+.empty-state p {
+  margin: 6px 0;
 }

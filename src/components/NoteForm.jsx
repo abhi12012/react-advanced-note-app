@@ -112,7 +112,7 @@ id="note-priority"
 </select>
 
 
-
+<div className="form-actions">
 
       <button onClick={handleAddNote}>
 
@@ -126,6 +126,8 @@ id="note-priority"
         </button>
       )}
     </div>
+</div>
+
   );
 }
 

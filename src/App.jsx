@@ -516,10 +516,9 @@ importedNotes.forEach((note) => {
 
 
 
-<span>
+<span className="pagination-info">
   Page {currentPage} of {totalPages}
 </span>
-
 
 
 <button
