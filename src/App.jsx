@@ -206,7 +206,9 @@ setNote(initialNote);
 };
 
   return (
+
     <div className="app-container">
+      
       <Header
         title="Advanced Notes App"
         subtitle="Manage your notes"
@@ -384,15 +386,15 @@ importedNotes.forEach((note) => {
 
       
 
-  
+  <div className="filters-section">
 
       <input
-        type="text"
-        placeholder="Search notes..."
-        value={searchText}
-        onChange={(event) => setSearchText(event.target.value)}
-      />
-
+  className="search-input"
+  type="text"
+  placeholder="Search notes..."
+  value={searchText}
+  onChange={(event) => setSearchText(event.target.value)}
+/>
 
 
       <select
@@ -475,7 +477,7 @@ importedNotes.forEach((note) => {
   {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
 </button>
 
-
+</div>
 
       <NoteForm
         note={note}
