@@ -37,6 +37,7 @@ if (event.key === "Escape") {
 </label>
 
       <input
+       className="form-input"
         id="note-title"
         name="title"
         type="text"
@@ -61,6 +62,7 @@ if (event.key === "Escape") {
 </label>
 
       <textarea
+      className="form-input"
         id="note-description"
         name="description"
         placeholder="Enter note description"
@@ -76,6 +78,7 @@ if (event.key === "Escape") {
 </label>
 
       <select
+      className="form-input"
       id="note-category"
   name="category"
   value={note.category}
@@ -97,6 +100,7 @@ if (event.key === "Escape") {
 </label>
 
 <select
+className="form-input"
 id="note-priority"
   name="priority"
   value={note.priority}

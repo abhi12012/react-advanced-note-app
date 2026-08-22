@@ -27,6 +27,18 @@
 
 
 
+.import-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+
+
+
 .filters-section {
   display: flex;
   flex-wrap: wrap;
@@ -70,6 +82,26 @@
   border-radius: 12px;
   background: var(--accent-bg);
 }
+
+
+.form-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--accent-bg);
+  color: var(--text-h);
+  font-size: 15px;
+}
+
+
+textarea.form-input {
+  min-height: 120px;
+  resize: vertical;
+}
+
 
 
 button {

@@ -235,6 +235,7 @@ setNote(initialNote);
 </div>
 
 
+<div className="import-section">
 
 <p>Import JSON:</p>
 
@@ -384,6 +385,9 @@ importedNotes.forEach((note) => {
     reader.readAsText(file);
   }}
 />
+
+
+</div>
 
 
 
