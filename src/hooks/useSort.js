@@ -1,13 +1,15 @@
+const priorityOrder = {
+  High: 1,
+  Medium: 2,
+  Low: 3
+};
+
 function useSort(filteredNotes, sortBy) {
 
   const sortedNotes = [...filteredNotes];
 if (sortBy === "priority") {
 
-  const priorityOrder = {
-    High: 1,
-    Medium: 2,
-    Low: 3
-  };
+  
 
   sortedNotes.sort((a, b) => {
 
@@ -26,11 +28,7 @@ if (sortBy === "priority") {
 
 if (sortBy === "priority-newest") {
 
-  const priorityOrder = {
-    High: 1,
-    Medium: 2,
-    Low: 3
-  };
+  
 
   sortedNotes.sort((a, b) => {
 
@@ -50,11 +48,7 @@ if (sortBy === "priority-newest") {
 
 if (sortBy === "priority-oldest") {
 
-  const priorityOrder = {
-    High: 1,
-    Medium: 2,
-    Low: 3
-  };
+  
 
   sortedNotes.sort((a, b) => {
 

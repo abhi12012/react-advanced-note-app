@@ -17,7 +17,7 @@ import Header from "./components/Header";
 import useSearch from "./hooks/useSearch";
 import useSort from "./hooks/useSort";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 
 
@@ -29,7 +29,13 @@ import useNotes from "./hooks/useNotes";
 
 
 
-
+const initialNote = {
+  title: "",
+  description: "",
+  category: "General",
+  isPinned: false,
+  priority: "Medium"
+};
 
 
 function App() {
@@ -44,13 +50,7 @@ useEffect(() => {
 }, [darkMode]);
 
 
-  const [note, setNote] = useState({
-  title: "",
-  description: "",
-  category: "General",
-  isPinned: false,
-  priority: "Medium"
-});
+  const [note, setNote] = useState(initialNote);
 
 
   const [editingId, setEditingId] = useState(null);
@@ -67,7 +67,7 @@ useEffect(() => {
 
   const [sortBy, setSortBy] = useState("newest");
 
-  const [secondarySortBy, setSecondarySortBy] = useState("none");
+ 
 
   const [categoryFilter, setCategoryFilter] = useState("all");
 
@@ -128,11 +128,7 @@ useEffect(() => {
 }, [sortedNotes.length]);
 
 
-  const pinnedNotes = [
-  ...sortedNotes.filter((note) => note.isPinned),
-  ...sortedNotes.filter((note) => !note.isPinned)
-];
-
+ 
 
 
 
@@ -168,13 +164,8 @@ useEffect(() => {
       });
 
       setEditingId(null);
-setNote({
-  title: "",
-  description: "",
-  category: "General",
-  isPinned: false,
-  priority: "Medium"
-});
+
+setNote(initialNote);
 
       return;
     }
@@ -188,24 +179,14 @@ setNote({
 
     addNote(newNote);
 
-    setNote({
-      title: "",
-      description: "",
-      category: "General"
-    });
+    setNote(initialNote);
   }
 
   function handleCancelEdit() {
      
     setEditingId(null);
 
-    setNote({
-  title: "",
-  description: "",
-  category: "General",
-  isPinned: false,
-  priority: "Medium"
-});
+   setNote(initialNote);
 
     setError("");
   }
