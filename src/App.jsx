@@ -1,3 +1,4 @@
+import "./App.css";
 
 import ErrorBoundary from "./components/ErrorBoundary";
 
@@ -215,6 +216,8 @@ setNote(initialNote);
       >
 
 
+<div className="header-actions">
+
         <button onClick={() => downloadCSV(notes)}>
   Export CSV
 </button>
@@ -227,6 +230,10 @@ setNote(initialNote);
 <button onClick={() => downloadJSON(notes, "notes.json")}>
   Export JSON
 </button>
+
+
+</div>
+
 
 
 <p>Import JSON:</p>

@@ -14,8 +14,10 @@ function NoteForm({
 
 
   return (
-    <div
+  <div
+    className="note-form"
 
+    
   onKeyDown={(event) => {
   if (event.ctrlKey && event.key === "Enter") {
   handleAddNote();
